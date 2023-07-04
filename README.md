@@ -1,5 +1,5 @@
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript%20%26%20React-1f425f.svg)](https://www.javascript.com)
-# Movie Application 🎥 🎬
+## Movie Application 🎥 🎬
  A client-based application that interacts with a movie API and allows the user to access information about movies.
 
  
