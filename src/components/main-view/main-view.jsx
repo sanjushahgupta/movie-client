@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { MovieCard } from "./movie-card";
 import { MovieView } from "./movie-view";
 
+
 export const MainView = () => {
     const [movies, setMovies] = useState([]);
 
@@ -39,6 +40,7 @@ export const MainView = () => {
     }
     return (
         <div>
+
             {
                 movies.map((movie => (
                     <MovieCard

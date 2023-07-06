@@ -27335,7 +27335,7 @@ const MainView = ()=>{
         onBackButtonClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 37,
+        lineNumber: 38,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27346,12 +27346,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 44,
+                lineNumber: 46,
                 columnNumber: 21
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 41,
+        lineNumber: 42,
         columnNumber: 9
     }, undefined);
 };
@@ -27376,19 +27376,40 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 const MovieCard = ({ movie, onMovieClick })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        style: {
+            backgroundColor: "black",
+            color: "white",
+            width: "220px",
+            margin: "10px",
+            textAlign: "center"
+        },
         onClick: ()=>{
             onMovieClick(movie);
         },
-        children: movie.title
-    }, void 0, false, {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: movie.title
+            }, void 0, false, {
+                fileName: "src/components/main-view/movie-card.jsx",
+                lineNumber: 9,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                src: movie.image,
+                height: "100"
+            }, void 0, false, {
+                fileName: "src/components/main-view/movie-card.jsx",
+                lineNumber: 10,
+                columnNumber: 9
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/components/main-view/movie-card.jsx",
-        lineNumber: 7,
+        lineNumber: 6,
         columnNumber: 12
     }, undefined);
 };
@@ -27408,7 +27429,7 @@ $RefreshReg$(_c, "MovieCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"fD7H8","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fDiVC","react":"21dqq","react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2"}],"fD7H8":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"fD7H8","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fDiVC","react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2"}],"fD7H8":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -28203,8 +28224,7 @@ const MovieView = ({ selectedMovie, onBackButtonClick })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: selectedMovie.image,
-                    height: 300
+                    src: selectedMovie.image
                 }, void 0, false, {
                     fileName: "src/components/main-view/movie-view.jsx",
                     lineNumber: 5,
@@ -28217,50 +28237,58 @@ const MovieView = ({ selectedMovie, onBackButtonClick })=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
-                    "Title: ",
-                    selectedMovie.title
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            "Title: ",
+                            selectedMovie.title
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/main-view/movie-view.jsx",
+                        lineNumber: 7,
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            "Description: ",
+                            selectedMovie.description
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/main-view/movie-view.jsx",
+                        lineNumber: 8,
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            "Genre: ",
+                            selectedMovie.genre
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/main-view/movie-view.jsx",
+                        lineNumber: 9,
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            "Director: ",
+                            selectedMovie.director
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/main-view/movie-view.jsx",
+                        lineNumber: 10,
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: onBackButtonClick,
+                        children: "Back"
+                    }, void 0, false, {
+                        fileName: "src/components/main-view/movie-view.jsx",
+                        lineNumber: 11,
+                        columnNumber: 13
+                    }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/main-view/movie-view.jsx",
                 lineNumber: 6,
-                columnNumber: 9
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: [
-                    "Description: ",
-                    selectedMovie.description
-                ]
-            }, void 0, true, {
-                fileName: "src/components/main-view/movie-view.jsx",
-                lineNumber: 7,
-                columnNumber: 9
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: [
-                    "Genre: ",
-                    selectedMovie.genre
-                ]
-            }, void 0, true, {
-                fileName: "src/components/main-view/movie-view.jsx",
-                lineNumber: 8,
-                columnNumber: 9
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: [
-                    "Director: ",
-                    selectedMovie.director
-                ]
-            }, void 0, true, {
-                fileName: "src/components/main-view/movie-view.jsx",
-                lineNumber: 9,
-                columnNumber: 9
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: onBackButtonClick,
-                children: "Back"
-            }, void 0, false, {
-                fileName: "src/components/main-view/movie-view.jsx",
-                lineNumber: 10,
                 columnNumber: 9
             }, undefined)
         ]
