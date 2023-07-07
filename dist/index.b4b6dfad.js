@@ -27312,7 +27312,8 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        fetch("https://movie-api-flix-556e5c313136.herokuapp.com/movies").then((response)=>{
+        //https://movie-api-flix-556e5c313136.herokuapp.com/movies
+        fetch("https://flix-api-1faf.onrender.com/movies").then((response)=>{
             response.json().then((data)=>{
                 const movieFromApi = data.map((movie)=>{
                     return {
@@ -27335,7 +27336,7 @@ const MainView = ()=>{
         onBackButtonClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 38,
+        lineNumber: 40,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27346,12 +27347,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 46,
+                lineNumber: 48,
                 columnNumber: 21
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 42,
+        lineNumber: 44,
         columnNumber: 9
     }, undefined);
 };
