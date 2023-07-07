@@ -11,14 +11,14 @@ import { SignInView } from "./signIn/signIn";
 export const MainView = () => {
 
     const [selectedMovie, setSelectedMovie] = useState(null);
-    // const storedUser = JSON.parse(localStorage.getItem("user"));
-    //const storedToken = localStorage.getItem("token");
-    // const [user, setUser] = useState(storedUser ? storedUser : null);
-    // const [token, setToken] = useState(storedToken ? storedToken : null);
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
+    const [user, setUser] = useState(storedUser ? storedUser : null);
+    const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
 
     //if user  value is null -> Login Page
-    /*if (!user) {
+    if (!user) {
 
         return (
             < div style={{ textAlign: "Center" }}>
@@ -26,34 +26,34 @@ export const MainView = () => {
                 or
                 < SignInView />
             </div>)
-    }*/
+    }
 
     useEffect(() => {
-        /*if (!token)
-            return;*/
+        if (!token)
+            return;
 
-        //https://movie-api-flix-556e5c313136.herokuapp.com/movies
+        https://movie-api-flix-556e5c313136.herokuapp.com/movies
 
 
 
         fetch("https://flix-api-1faf.onrender.com/movies").then((response => {
             //to parse json data into object nested then is used
-                response.json().then((data => {
-                        const movieFromApi = data.map((movie) => {
-                            return {
-                                id: movie._id,
-                                title: movie.Title,
-                                image: movie.Image,
-                                description: movie.Description,
-                                director: movie.Director.Name,
-                                genre: movie.Genre.Name
-                            }
-                        })
-                        setMovies(movieFromApi)
-                    }))
-            })).catch(e => {
-                console.log("error", e);
-            })
+            response.json().then((data => {
+                const movieFromApi = data.map((movie) => {
+                    return {
+                        id: movie._id,
+                        title: movie.Title,
+                        image: movie.Image,
+                        description: movie.Description,
+                        director: movie.Director.Name,
+                        genre: movie.Genre.Name
+                    }
+                })
+                setMovies(movieFromApi)
+            }))
+        })).catch(e => {
+            console.log("error", e);
+        })
 
     }, []);
 

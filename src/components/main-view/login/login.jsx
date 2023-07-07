@@ -6,7 +6,7 @@ export const LoginView = ({ onLoggedIn }) => {
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
 
-    const handleSubmit = (event) => {
+    const submitHandler = (event) => {
         event.preventDefault();
         console.log("inside handle submit")
 
@@ -16,7 +16,7 @@ export const LoginView = ({ onLoggedIn }) => {
         };
 
 
-        fetch("https://openlibrary.org/account/login.json", {
+        fetch("https://flix-api-1faf.onrender.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -31,7 +31,7 @@ export const LoginView = ({ onLoggedIn }) => {
                     localStorage.setItem("token", data.token)
                     onLoggedIn(data.user, data.token);
                 } else {
-                    alert("No such user");
+                    alert("User not found");
                 }
             })
             .catch((e) => {
@@ -39,7 +39,7 @@ export const LoginView = ({ onLoggedIn }) => {
             })
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitHandler}>
             <h1>LOGIN</h1>
             <label>
                 Username:
