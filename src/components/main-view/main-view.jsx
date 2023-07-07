@@ -23,7 +23,7 @@ export const MainView = () => {
         return (
             < div style={{ textAlign: "Center" }}>
                 <LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token) }} />
-                or
+                <div style={{ border: "solid 2px" }}></div>
                 < SignInView />
             </div>)
     }
@@ -55,7 +55,7 @@ export const MainView = () => {
             console.log("error", e);
         })
 
-    }, []);
+    }, [token]);
 
     if (selectedMovie) {
         return <MovieView selectedMovie={selectedMovie}

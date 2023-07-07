@@ -1,10 +1,11 @@
 import React from "react"
 import { useState } from "react"
+import "../../../css/styles.css"
 
 export const LoginView = ({ onLoggedIn }) => {
     console.log("inside login")
-    const [username, setUsername] = useState(null);
-    const [password, setPassword] = useState(null);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const submitHandler = (event) => {
         event.preventDefault();
@@ -39,8 +40,8 @@ export const LoginView = ({ onLoggedIn }) => {
             })
     }
     return (
-        <form onSubmit={submitHandler}>
-            <h1>LOGIN</h1>
+        <form style={{ margin: "20px" }} onSubmit={submitHandler}>
+            <h3>LOGIN</h3>
             <label>
                 Username:
                 <input
