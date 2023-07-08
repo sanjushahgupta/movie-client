@@ -1,10 +1,11 @@
 import React from "react"
 import { useState } from "react"
-import "../../../css/styles.css"
+import "../../css/styles.css"
+import { BaseUrl } from "../../constants/constant"
 
 export const LoginView = ({ onLoggedIn }) => {
     console.log("inside login")
-    const [username, setUsername] = useState("");
+    const [userName, setuserName] = useState("");
     const [password, setPassword] = useState("");
 
     const submitHandler = (event) => {
@@ -12,12 +13,12 @@ export const LoginView = ({ onLoggedIn }) => {
         console.log("inside handle submit")
 
         const data = {
-            username: username,
+            userName: userName,
             password: password
         };
 
 
-        fetch("https://flix-api-1faf.onrender.com/login", {
+        fetch(BaseUrl + "/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -43,11 +44,11 @@ export const LoginView = ({ onLoggedIn }) => {
         <form style={{ margin: "20px" }} onSubmit={submitHandler}>
             <h3>LOGIN</h3>
             <label>
-                Username:
+                userName:
                 <input
                     type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={userName}
+                    onChange={(e) => setuserName(e.target.value)}
                     required
                 />
             </label>
