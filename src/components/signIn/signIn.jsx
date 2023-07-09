@@ -10,7 +10,7 @@ export const SignInView = () => {
     const [birth, SetDateOfBirth] = useState("");
 
 
-    handleSubmit = (event) => {
+    registerSubmitHandler = (event) => {
         event.preventDefault();
 
         const reqBody = {
@@ -20,7 +20,7 @@ export const SignInView = () => {
             birth: birth
         }
 
-        fetch("https://flix-api-1faf.onrender.com/register", {
+        fetch(BaseUrl + "/register", {
             method: "POST",
             body: JSON.stringify(reqBody),
             headers: {
@@ -30,11 +30,8 @@ export const SignInView = () => {
             if (response.status == 200) {
                 alert("Signup successful");
                 window.location.reload();
-                console.log(response)
             } else {
-                console.log("response", response.body.status);
                 alert("Unable to register. Please check your credentials.");
-
             }
         }).catch(e => {
             console.log("error: ", e)
@@ -43,7 +40,7 @@ export const SignInView = () => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={registerSubmitHandler}>
             <h3>Sign Up</h3>
             <label>
                 Username:
@@ -62,6 +59,7 @@ export const SignInView = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    minLength="6"
                 />
             </label>
             <label>
@@ -86,4 +84,5 @@ export const SignInView = () => {
         </form>
 
     )
+
 }

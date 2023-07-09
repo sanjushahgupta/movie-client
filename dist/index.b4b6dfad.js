@@ -27172,53 +27172,53 @@ var _login = require("../login/login");
 var _signIn = require("../signIn/signIn");
 var _constant = require("../../constants/constant");
 var _s = $RefreshSig$();
-const LoginOrSignInView = ({ onLoggedIn })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        style: {
-            textAlign: "Center"
-        },
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _login.LoginView), {
-                onLoggedIn: onLoggedIn
-            }, void 0, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 13,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                style: {
-                    border: "solid 2px"
-                }
-            }, void 0, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 14,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signIn.SignInView), {}, void 0, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 15,
-                columnNumber: 13
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 12,
-        columnNumber: 9
-    }, undefined);
-};
-_c = LoginOrSignInView;
 const MainView = ()=>{
     _s();
-    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [movies, setMovies] = (0, _react.useState)([]);
+    const LoginSignInView = ({ onLoggedIn })=>{
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            style: {
+                textAlign: "Center"
+            },
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _login.LoginView), {
+                    onLoggedIn: onLoggedIn
+                }, void 0, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 21,
+                    columnNumber: 17
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    style: {
+                        border: "solid 2px"
+                    }
+                }, void 0, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 22,
+                    columnNumber: 17
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signIn.SignInView), {}, void 0, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 23,
+                    columnNumber: 17
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/main-view/main-view.jsx",
+            lineNumber: 20,
+            columnNumber: 13
+        }, undefined);
+    };
     const handleLogout = ()=>{
         setUser(null);
         setToken(null);
-        localStorage.clear(); // Clearing token and other user data from localStorage
+        localStorage.clear();
+        window.location.reload();
     };
     (0, _react.useEffect)(()=>{
         if (!token) return;
@@ -27242,21 +27242,14 @@ const MainView = ()=>{
     }, [
         token
     ]);
-    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "LogIn",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(LoginOrSignInView, {
-            onLoggedIn: (user, token)=>{
-                setUser(user);
-                setToken(token);
-            }
-        }, void 0, false, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 60,
-            columnNumber: 17
-        }, undefined)
+    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(LoginSignInView, {
+        onLoggedIn: (user, token)=>{
+            setUser(user);
+            setToken(token);
+        }
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 59,
+        lineNumber: 61,
         columnNumber: 13
     }, undefined);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27264,11 +27257,10 @@ const MainView = ()=>{
         onBackButtonClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 72,
+        lineNumber: 73,
         columnNumber: 13
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "movieAndLogout",
         children: [
             movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                     movie: movie,
@@ -27277,7 +27269,7 @@ const MainView = ()=>{
                     }
                 }, movie.id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 84,
+                    lineNumber: 83,
                     columnNumber: 17
                 }, undefined)),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27285,21 +27277,20 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 92,
+                lineNumber: 91,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 82,
+        lineNumber: 81,
         columnNumber: 9
     }, undefined);
 };
 _s(MainView, "VB8BwK2zEiu1oV1tbUjKd/IEN0g=");
-_c1 = MainView;
-var _c, _c1;
-$RefreshReg$(_c, "LoginOrSignInView");
-$RefreshReg$(_c1, "MainView");
+_c = MainView;
+var _c;
+$RefreshReg$(_c, "MainView");
 
   $parcel$ReactRefreshHelpers$f7a6.postlude(module);
 } finally {
@@ -28406,13 +28397,12 @@ var _constant = require("../../constants/constant");
 var _s = $RefreshSig$();
 const LoginView = ({ onLoggedIn })=>{
     _s();
-    console.log("inside login");
+    console.log("inside loginIn");
     const [userName, setuserName] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
-    const submitHandler = (event)=>{
+    const loginSubmitHandler = (event)=>{
         event.preventDefault();
-        console.log("inside handle submit");
-        const data = {
+        const reqBody = {
             userName: userName,
             password: password
         };
@@ -28421,13 +28411,14 @@ const LoginView = ({ onLoggedIn })=>{
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(reqBody)
         }).then((response)=>response.json()).then((data)=>{
             console.log("Login response: ", data);
             if (data.user) {
                 localStorage.setItem("user", JSON.stringify(data.user));
                 localStorage.setItem("token", data.token);
                 onLoggedIn(data.user, data.token);
+                window.location.reload();
             } else alert("User not found");
         }).catch((e)=>{
             alert("Something went wrong");
@@ -28437,13 +28428,13 @@ const LoginView = ({ onLoggedIn })=>{
         style: {
             margin: "20px"
         },
-        onSubmit: submitHandler,
+        onSubmit: loginSubmitHandler,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: "LOGIN"
             }, void 0, false, {
                 fileName: "src/components/login/login.jsx",
-                lineNumber: 45,
+                lineNumber: 48,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28453,16 +28444,17 @@ const LoginView = ({ onLoggedIn })=>{
                         type: "text",
                         value: userName,
                         onChange: (e)=>setuserName(e.target.value),
-                        required: true
+                        required: true,
+                        minLength: "5"
                     }, void 0, false, {
                         fileName: "src/components/login/login.jsx",
-                        lineNumber: 48,
+                        lineNumber: 51,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login/login.jsx",
-                lineNumber: 46,
+                lineNumber: 49,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28472,16 +28464,17 @@ const LoginView = ({ onLoggedIn })=>{
                         type: "password",
                         value: password,
                         onChange: (e)=>setPassword(e.target.value),
-                        required: true
+                        required: true,
+                        minLength: "6"
                     }, void 0, false, {
                         fileName: "src/components/login/login.jsx",
-                        lineNumber: 57,
+                        lineNumber: 61,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login/login.jsx",
-                lineNumber: 55,
+                lineNumber: 59,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28489,13 +28482,13 @@ const LoginView = ({ onLoggedIn })=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/login/login.jsx",
-                lineNumber: 64,
+                lineNumber: 69,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login/login.jsx",
-        lineNumber: 44,
+        lineNumber: 47,
         columnNumber: 9
     }, undefined);
 };
@@ -28537,7 +28530,7 @@ const SignInView = ()=>{
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
     const [birth, SetDateOfBirth] = (0, _react.useState)("");
-    handleSubmit = (event)=>{
+    registerSubmitHandler = (event)=>{
         event.preventDefault();
         const reqBody = {
             userName: userName,
@@ -28545,7 +28538,7 @@ const SignInView = ()=>{
             email: email,
             birth: birth
         };
-        fetch("https://flix-api-1faf.onrender.com/register", {
+        fetch((0, _constant.BaseUrl) + "/register", {
             method: "POST",
             body: JSON.stringify(reqBody),
             headers: {
@@ -28554,24 +28547,20 @@ const SignInView = ()=>{
         }).then((response)=>{
             if (response.status == 200) {
                 alert("Signup successful");
-                //  window.location.reload(response.toString());
-                console.log(response);
-            } else {
-                console.log("response", response.body.status);
-                alert("Unable to register. Please check your credentials.");
-            }
+                window.location.reload();
+            } else alert("Unable to register. Please check your credentials.");
         }).catch((e)=>{
             console.log("error: ", e);
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-        onSubmit: handleSubmit,
+        onSubmit: registerSubmitHandler,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: "Sign Up"
             }, void 0, false, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 47,
+                lineNumber: 44,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28585,13 +28574,13 @@ const SignInView = ()=>{
                         minLength: "5"
                     }, void 0, false, {
                         fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 50,
+                        lineNumber: 47,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 48,
+                lineNumber: 45,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28601,16 +28590,17 @@ const SignInView = ()=>{
                         type: "password",
                         value: password,
                         onChange: (e)=>setPassword(e.target.value),
-                        required: true
+                        required: true,
+                        minLength: "6"
                     }, void 0, false, {
                         fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 60,
+                        lineNumber: 57,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 58,
+                lineNumber: 55,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28623,13 +28613,13 @@ const SignInView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 69,
+                        lineNumber: 67,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 67,
+                lineNumber: 65,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28642,13 +28632,13 @@ const SignInView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 78,
+                        lineNumber: 76,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 76,
+                lineNumber: 74,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28656,13 +28646,13 @@ const SignInView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 85,
+                lineNumber: 83,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/signIn/signIn.jsx",
-        lineNumber: 46,
+        lineNumber: 43,
         columnNumber: 9
     }, undefined);
 };
