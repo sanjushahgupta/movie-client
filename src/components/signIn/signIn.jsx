@@ -7,7 +7,7 @@ export const SignInView = () => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    const [dateOfBirth, SetDateOfBirth] = useState("");
+    const [birth, SetDateOfBirth] = useState("");
 
 
     handleSubmit = (event) => {
@@ -17,22 +17,20 @@ export const SignInView = () => {
             userName: userName,
             password: password,
             email: email,
-            dateOfBirth: dateOfBirth
+            birth: birth
         }
 
-        fetch(BaseUrl + "/register", {
+        fetch("https://flix-api-1faf.onrender.com/register", {
             method: "POST",
             body: JSON.stringify(reqBody),
             headers: {
                 "Content-Type": "application/json"
             }
         }).then((response) => {
-            if (response.ok) {
-                alert("Signup successful");
-                window.location.reload();
-            } else {
-                alert("Signup failed");
-            }
+
+            alert("Signup successful", response.status);
+            window.location.reload();
+
         }).catch(e => {
             console.log("error: ", e)
         });
@@ -74,7 +72,7 @@ export const SignInView = () => {
                 DateOfBirth:
                 <input
                     type="date"
-                    value={dateOfBirth}
+                    value={birth}
                     onChange={(e) => SetDateOfBirth(e.target.value)}
                     required
                 />

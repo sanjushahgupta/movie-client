@@ -30,34 +30,36 @@ export const MainView = () => {
             </div>)
     }
 
-    /*  useEffect(() => {
-          if (!token)
-              return;
-  
-          // https://movie-api-flix-556e5c313136.herokuapp.com/movies
-  
-  
-  
-          fetch(BaseUrl + "/movies").then((response => {
-              //to parse json data into object nested then is used
-              response.json().then((data => {
-                  const movieFromApi = data.map((movie) => {
-                      return {
-                          id: movie._id,
-                          title: movie.Title,
-                          image: movie.Image,
-                          description: movie.Description,
-                          director: movie.Director.Name,
-                          genre: movie.Genre.Name
-                      }
-                  })
-                  setMovies(movieFromApi)
-              }))
-          })).catch(e => {
-              console.log("error", e);
-          })
-  
-      }, [token]);*/
+    useEffect(() => {
+        if (!token)
+            return;
+
+        // https://movie-api-flix-556e5c313136.herokuapp.com/movies
+
+
+
+        fetch(BaseUrl + "/movies", {
+            headers: { Authorization: `Bearer ${token}` }
+        }).then((response => {
+            //to parse json data into object nested then is used
+            response.json().then((data => {
+                const movieFromApi = data.map((movie) => {
+                    return {
+                        id: movie._id,
+                        title: movie.Title,
+                        image: movie.Image,
+                        description: movie.Description,
+                        director: movie.Director.Name,
+                        genre: movie.Genre.Name
+                    }
+                })
+                setMovies(movieFromApi)
+            }))
+        })).catch(e => {
+            console.log("error", e);
+        })
+
+    }, [token]);
 
     if (selectedMovie) {
         return <MovieView selectedMovie={selectedMovie}
@@ -66,6 +68,7 @@ export const MainView = () => {
 
     return (
         <div>
+            <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
             {
                 movies.map((movie => (
                     <MovieCard

@@ -27216,59 +27216,74 @@ const MainView = ()=>{
         lineNumber: 26,
         columnNumber: 13
     }, undefined);
-    /*  useEffect(() => {
-          if (!token)
-              return;
-  
-          // https://movie-api-flix-556e5c313136.herokuapp.com/movies
-  
-  
-  
-          fetch(BaseUrl + "/movies").then((response => {
-              //to parse json data into object nested then is used
-              response.json().then((data => {
-                  const movieFromApi = data.map((movie) => {
-                      return {
-                          id: movie._id,
-                          title: movie.Title,
-                          image: movie.Image,
-                          description: movie.Description,
-                          director: movie.Director.Name,
-                          genre: movie.Genre.Name
-                      }
-                  })
-                  setMovies(movieFromApi)
-              }))
-          })).catch(e => {
-              console.log("error", e);
-          })
-  
-      }, [token]);*/ if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+    (0, _react.useEffect)(()=>{
+        if (!token) return;
+        // https://movie-api-flix-556e5c313136.herokuapp.com/movies
+        fetch((0, _constant.BaseUrl) + "/movies", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            //to parse json data into object nested then is used
+            response.json().then((data)=>{
+                const movieFromApi = data.map((movie)=>{
+                    return {
+                        id: movie._id,
+                        title: movie.Title,
+                        image: movie.Image,
+                        description: movie.Description,
+                        director: movie.Director.Name,
+                        genre: movie.Genre.Name
+                    };
+                });
+                setMovies(movieFromApi);
+            });
+        }).catch((e)=>{
+            console.log("error", e);
+        });
+    }, [
+        token
+    ]);
+    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         selectedMovie: selectedMovie,
         onBackButtonClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 63,
+        lineNumber: 65,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                movie: movie,
-                onMovieClick: (newSelectedMovie)=>{
-                    setSelectedMovie(newSelectedMovie);
-                }
-            }, movie.id, false, {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: ()=>{
+                    setUser(null);
+                    setToken(null);
+                    localStorage.clear();
+                },
+                children: "Logout"
+            }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 71,
-                columnNumber: 21
-            }, undefined))
-    }, void 0, false, {
+                columnNumber: 13
+            }, undefined),
+            movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                    movie: movie,
+                    onMovieClick: (newSelectedMovie)=>{
+                        setSelectedMovie(newSelectedMovie);
+                    }
+                }, movie.id, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 74,
+                    columnNumber: 21
+                }, undefined))
+        ]
+    }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 68,
+        lineNumber: 70,
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "rlfVJgzJU1wZPj8PUDBYVzMlyIE=");
+_s(MainView, "VB8BwK2zEiu1oV1tbUjKd/IEN0g=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -28508,26 +28523,24 @@ const SignInView = ()=>{
     const [userName, setUserName] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
-    const [dateOfBirth, SetDateOfBirth] = (0, _react.useState)("");
+    const [birth, SetDateOfBirth] = (0, _react.useState)("");
     handleSubmit = (event)=>{
         event.preventDefault();
         const reqBody = {
             userName: userName,
             password: password,
             email: email,
-            dateOfBirth: dateOfBirth
+            birth: birth
         };
-        fetch((0, _constant.BaseUrl) + "/register", {
+        fetch("https://flix-api-1faf.onrender.com/register", {
             method: "POST",
             body: JSON.stringify(reqBody),
             headers: {
                 "Content-Type": "application/json"
             }
         }).then((response)=>{
-            if (response.ok) {
-                alert("Signup successful");
-                window.location.reload();
-            } else alert("Signup failed");
+            alert("Signup successful", response.status);
+            window.location.reload();
         }).catch((e)=>{
             console.log("error: ", e);
         });
@@ -28539,7 +28552,7 @@ const SignInView = ()=>{
                 children: "Sign Up"
             }, void 0, false, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 44,
+                lineNumber: 42,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28553,13 +28566,13 @@ const SignInView = ()=>{
                         minLength: "5"
                     }, void 0, false, {
                         fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 47,
+                        lineNumber: 45,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 45,
+                lineNumber: 43,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28572,13 +28585,13 @@ const SignInView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 57,
+                        lineNumber: 55,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 55,
+                lineNumber: 53,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28591,13 +28604,13 @@ const SignInView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 66,
+                        lineNumber: 64,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 64,
+                lineNumber: 62,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28605,18 +28618,18 @@ const SignInView = ()=>{
                     "DateOfBirth:",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                         type: "date",
-                        value: dateOfBirth,
+                        value: birth,
                         onChange: (e)=>SetDateOfBirth(e.target.value),
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 75,
+                        lineNumber: 73,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 73,
+                lineNumber: 71,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28624,17 +28637,17 @@ const SignInView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 82,
+                lineNumber: 80,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/signIn/signIn.jsx",
-        lineNumber: 43,
+        lineNumber: 41,
         columnNumber: 9
     }, undefined);
 };
-_s(SignInView, "WvqEU4rz1PkwGht4NH+Fh206oNc=");
+_s(SignInView, "XNQ5T/joXliDIuSH8lHxmcUMyFM=");
 _c = SignInView;
 var _c;
 $RefreshReg$(_c, "SignInView");
