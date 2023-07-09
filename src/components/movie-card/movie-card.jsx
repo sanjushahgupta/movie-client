@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export const MovieCard = ({ movie, onMovieClick }) => {
 
-    return <div class="movieCard" onClick={() => {
+    return <div className="movieCard" onClick={() => {
         onMovieClick(movie);
     }}>
         <div>{movie.title}</div>

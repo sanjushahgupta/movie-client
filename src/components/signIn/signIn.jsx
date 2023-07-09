@@ -27,10 +27,15 @@ export const SignInView = () => {
                 "Content-Type": "application/json"
             }
         }).then((response) => {
+            if (response.status == 200) {
+                alert("Signup successful");
+                window.location.reload();
+                console.log(response)
+            } else {
+                console.log("response", response.body.status);
+                alert("Unable to register. Please check your credentials.");
 
-            alert("Signup successful", response.status);
-            window.location.reload();
-
+            }
         }).catch(e => {
             console.log("error: ", e)
         });
