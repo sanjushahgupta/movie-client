@@ -1,10 +1,10 @@
 import React from "react"
 import { useState } from "react"
+import { Form, Button } from "react-bootstrap"
 import "../../css/styles.css"
 import { BaseUrl } from "../../constants/constant"
 
 export const LoginView = ({ onLoggedIn }) => {
-    console.log("inside loginIn")
 
     const [userName, setuserName] = useState("");
     const [password, setPassword] = useState("");
@@ -44,29 +44,30 @@ export const LoginView = ({ onLoggedIn }) => {
     }
 
     return (
-        <form style={{ margin: "20px" }} onSubmit={loginSubmitHandler}>
-            <h3>LOGIN</h3>
-            <label>
-                userName:
-                <input
-                    type="text"
-                    value={userName}
-                    onChange={(e) => setuserName(e.target.value)}
-                    required
-                    minLength="5"
-                />
-            </label>
-            <label>
-                Password:
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    minLength="6"
-                />
-            </label>
-            <button type="submit">Submit</button>
-        </form>)
+        <>
+            <Form className="m-5" onSubmit={loginSubmitHandler}>
+                <h3>Login</h3>
+                <Form.Group controlId="loginUsername">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control
+                        type="text"
+                        value={userName}
+                        onChange={(e) => setuserName(e.target.value)}
+                        required
+                        minLength="5" />
+                </Form.Group>
+
+                <Form.Group controlId="loginPassword">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        minLength="6" />
+                </Form.Group>
+                <Button variant="warning" className="mt-2" type="submit">Submit</Button>
+            </Form>
+        </>)
 
 }

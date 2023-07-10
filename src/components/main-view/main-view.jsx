@@ -6,6 +6,8 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login/login";
 import { SignInView } from "../signIn/signIn";
 import { BaseUrl } from "../../constants/constant";
+import { Row, Col } from "react-bootstrap"
+import "../../css/styles.css"
 
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -15,15 +17,21 @@ export const MainView = () => {
     const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
 
+
+
     const LoginSignInView = ({ onLoggedIn }) => {
         return (
-            <div style={{ textAlign: "Center" }}>
-                <LoginView onLoggedIn={onLoggedIn} />
-                <div style={{ border: "solid 2px" }}></div>
-                <SignInView />
-            </div>
+            <>
+                <Row className="justify-content-md-center" >
+                    <Col md={5}>
+                        <LoginView onLoggedIn={onLoggedIn} />
+                        <SignInView />
+                    </Col>
+                </Row>
+            </>
         );
     };
+
 
     const handleLogout = () => {
         setUser(null);
@@ -70,10 +78,14 @@ export const MainView = () => {
 
     if (selectedMovie) {
         return (
-            <MovieView
-                selectedMovie={selectedMovie}
-                onBackButtonClick={() => setSelectedMovie(null)}
-            />
+            <>
+                <Col md={8}>
+                    <MovieView
+                        selectedMovie={selectedMovie}
+                        onBackButtonClick={() => setSelectedMovie(null)}
+                    />
+                </Col>
+            </>
         );
     }
 
