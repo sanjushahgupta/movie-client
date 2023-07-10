@@ -1,16 +1,9 @@
-.movieCard {
-  background-color: "black";
-  color: "white";
-  width: "220px";
-  margin: "10px";
-}
-
 .color-nav {
   background-color: #000;
 }
 
 .color-nav .text-nav {
-  color: #ec0814;
+  color: #ebe8e8;
   font-size: 20px;
 }
 

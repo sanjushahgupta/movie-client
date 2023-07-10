@@ -66,7 +66,7 @@ export const SignInView = () => {
                 />
 
             </Form.Group>
-            <Form.Group ControlId="signupEmail">
+            <Form.Group controlId="signupEmail">
                 <Form.Label>Email:</Form.Label>
                 <Form.Control
                     type="email"
@@ -75,7 +75,7 @@ export const SignInView = () => {
                     required
                 />
             </Form.Group>
-            <Form.Group ControlId="birth">
+            <Form.Group controlId="birth">
                 <Form.Label> DateOfBirth:</Form.Label>
                 <Form.Control
                     type="date"
