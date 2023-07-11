@@ -1,6 +1,7 @@
 $primary: SeaGreen;
 $body-bg: #530f0f;
 $color: rgb(250, 247, 247);
+
 @import '~bootstrap/scss/bootstrap.scss';
 
 * {
@@ -46,5 +47,5 @@ $color: rgb(250, 247, 247);
 
 .movieCard {
     width: 15rem;
-    height: 18rem;
+    height: 16rem;
 }
