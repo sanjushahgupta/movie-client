@@ -6,8 +6,11 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login/login";
 import { SignInView } from "../signIn/signIn";
 import { BaseUrl } from "../../constants/constant";
-import { Row, Col, Container, Navbar, Button } from "react-bootstrap"
-import "../../css/styles.css"
+import { Row, Col, Container, Navbar, Button, Image } from "react-bootstrap"
+import "../../index.scss"
+import cover from "../../css/cover.png"
+
+
 
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -22,12 +25,13 @@ export const MainView = () => {
     const LoginSignInView = ({ onLoggedIn }) => {
         return (
             <>
-                <Row className="justify-content-md-center" >
-                    <Col md={5}>
-                        <LoginView onLoggedIn={onLoggedIn} />
-                        <SignInView />
-                    </Col>
-                </Row>
+                <div className="wrapper">
+                    <Image src={cover} className="mt-3" height="80" />
+                    <Row className="justify-content-center" >
+                        <Col> <SignInView /></Col>
+                        <Col><LoginView onLoggedIn={onLoggedIn} /></Col>
+                    </Row>
+                </div>
             </>
         );
     };
@@ -54,7 +58,9 @@ export const MainView = () => {
                     image: movie.Image,
                     description: movie.Description,
                     director: movie.Director.Name,
+                    directorBio: movie.Director.Bio,
                     genre: movie.Genre.Name,
+                    genreDescription: movie.Genre.Description
                 }));
                 setMovies(movieFromApi);
             })
@@ -78,12 +84,16 @@ export const MainView = () => {
 
     if (selectedMovie) {
         return (
-            <>
-                <Row>
+            <> <Navbar fluid className="color-nav mb-4" expand="lg">
+                <Container fluid className='justify-content-start'>
+                    <Button variant="warning" size="sm" onClick={() => setSelectedMovie(null)}>Back</Button>
+                    <Navbar.Text className="text-nav">Movie</Navbar.Text>
+                </Container>
+            </Navbar>
+                <Row className="justify-content-md-center">
                     <Col md={8}>
                         <MovieView
                             selectedMovie={selectedMovie}
-                            onBackButtonClick={() => setSelectedMovie(null)}
                         />
                     </Col>
                 </Row>
@@ -93,10 +103,10 @@ export const MainView = () => {
 
     return (
         <>
-            <Navbar className="color-nav my-2" expand="lg">
-                <Container>
+            <Navbar className="color-nav mb-4" expand="lg">
+                <Container fluid>
                     <Navbar.Text className="text-nav">Movie</Navbar.Text>
-                    <Button variant="danger" onClick={handleLogout}>Logout</Button>
+                    <Button variant="danger" size="sm" onClick={handleLogout}>Logout</Button>
                 </Container>
             </Navbar>
             <Row className="justify-content-md-center">
@@ -110,10 +120,8 @@ export const MainView = () => {
                             }}
                         />
                     </Col>
-
                 ))}
             </Row>
-
         </>
     );
 

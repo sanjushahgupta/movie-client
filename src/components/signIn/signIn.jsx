@@ -1,5 +1,4 @@
 import React from "react"
-import "../../css/styles.css"
 import { useState } from "react"
 import { BaseUrl } from "../../constants/constant"
 import { Form, Button } from "react-bootstrap"
@@ -41,52 +40,59 @@ export const SignInView = () => {
 
 
     return (
-        <Form className="m-5" onSubmit={registerSubmitHandler}>
-            <h3>Sign In</h3>
-            <Form.Group controlId="signupUsername">
-                <Form.Label>
-                    Username: </Form.Label>
-                <Form.Control
-                    type="text"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                    required
-                    minLength="5"
-                />
+        <>
+            <div className="signIn">
+                <Form className="p-5" onSubmit={registerSubmitHandler}>
+                    <h3>Sign In</h3>
+                    <Form.Group controlId="signupUsername">
+                        <Form.Label className="text-lg mt-3">
+                            Username: </Form.Label>
+                        <Form.Control className={"bg-light"}
+                            type="text"
+                            value={userName}
+                            onChange={(e) => setUserName(e.target.value)}
+                            required
+                            minLength="5"
+                            size="lg"
+                        />
 
-            </Form.Group>
-            <Form.Group controlId="signupPassword">
-                <Form.Label>Password:</Form.Label>
-                <Form.Control
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    minLength="6"
-                />
+                    </Form.Group>
+                    <Form.Group controlId="signupPassword">
+                        <Form.Label className="text-lg mt-3">Password:</Form.Label>
+                        <Form.Control className={"bg-light"}
+                            type="password"
+                            size="lg"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            minLength="6"
+                        />
 
-            </Form.Group>
-            <Form.Group controlId="signupEmail">
-                <Form.Label>Email:</Form.Label>
-                <Form.Control
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </Form.Group>
-            <Form.Group controlId="birth">
-                <Form.Label> DateOfBirth:</Form.Label>
-                <Form.Control
-                    type="date"
-                    value={birth}
-                    onChange={(e) => SetDateOfBirth(e.target.value)}
-                    required
-                />
-            </Form.Group>
-            <Button variant="warning" className="mt-2" type="submit">Submit</Button>
-        </Form >
-
+                    </Form.Group>
+                    <Form.Group controlId="signupEmail">
+                        <Form.Label className="text-lg mt-3">Email:</Form.Label>
+                        <Form.Control className={"bg-light"}
+                            type="email"
+                            size="lg"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="birth">
+                        <Form.Label className="text-lg mt-3"> DateOfBirth:</Form.Label>
+                        <Form.Control className={"bg-light"}
+                            type="date"
+                            size="lg"
+                            value={birth}
+                            onChange={(e) => SetDateOfBirth(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
+                    <Button className="mt-2" type="submit">Submit</Button>
+                </Form >
+            </div >
+        </>
     )
 
 }

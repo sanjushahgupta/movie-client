@@ -1,20 +1,18 @@
 
 import PropTypes from 'prop-types';
 import { Card, CardImg } from 'react-bootstrap';
-import "../../css/styles.css"
 
 export const MovieCard = ({ movie, onMovieClick }) => {
 
     return <>
-        <Card style={{ width: '15rem', height: '18rem' }} onClick={() => {
+        <Card className='movieCard' onClick={() => {
             onMovieClick(movie);
         }}>
-            <CardImg src={movie.image} width={150} height={180}></CardImg>
+            <CardImg src={movie.image} width={150} height={180} alt="ImgMovie"></CardImg>
             <Card.Body>
                 <Card.Title>{movie.title}</Card.Title>
             </Card.Body>
         </Card>
-
     </>
 }
 
