@@ -9,7 +9,7 @@ import { BaseUrl } from "../../constants/constant";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Row, Col, Container, Navbar, Button, Image } from "react-bootstrap"
 import "../../index.scss"
-import cover from "../../css/cover.png"
+import { NavigationBar } from "../navigation-bar/navigation-bar";
 
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -17,6 +17,13 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser ? storedUser : null);
     const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
+
+    const handleLogout = () => {
+        setUser(null);
+        setToken(null);
+        localStorage.clear();
+        window.location.reload();
+    };
 
     useEffect(() => {
         fetch(BaseUrl + "/movies", {
@@ -44,7 +51,9 @@ export const MainView = () => {
 
     return (
         <>
-            <Image className="m-3" src={cover} height={80} />
+            <NavigationBar
+                user
+                onLoggedOut={handleLogout} />
             <BrowserRouter>
                 <Row className="justify-content-md-center">
                     <Routes>
@@ -123,11 +132,5 @@ export const MainView = () => {
 
 
 
-    /* const handleLogout = () => {
-         setUser(null);
-         setToken(null);
-         localStorage.clear();
-         window.location.reload();
-     };
-     }*/
+
 }
