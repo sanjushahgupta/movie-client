@@ -1,6 +1,6 @@
 import React from "react"
 import { useState } from "react"
-import { Form, Button } from "react-bootstrap"
+import { Form, Button, Card, Image, Nav } from "react-bootstrap"
 import { BaseUrl } from "../../constants/constant"
 
 export const LoginView = ({ onLoggedIn }) => {
@@ -41,34 +41,39 @@ export const LoginView = ({ onLoggedIn }) => {
 
     return (
         <>
-            <div className="logIn">
-                <Form className="m-5" onSubmit={loginSubmitHandler}>
-                    <h3>Login</h3>
-                    <Form.Group controlId="loginUsername">
-                        <Form.Label className="text-lg mt-3">Username:</Form.Label>
-                        <Form.Control className={"bg-light"}
-                            type="text"
-                            size="lg"
-                            value={userName}
-                            onChange={(e) => setuserName(e.target.value)}
-                            required
-                            minLength="5" />
-                    </Form.Group>
 
-                    <Form.Group controlId="loginPassword">
-                        <Form.Label className="text-lg mt-3">Password:</Form.Label>
-                        <Form.Control className={"bg-light"}
-                            type="password"
-                            size="lg"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                            minLength="6" />
-                    </Form.Group>
-                    <Button className="mt-2" type="submit">Submit</Button>
-                </Form>
+            <div style={{ display: "grid", justifyContent: "center" }}>
+                <Card className="mt-3">
+                    <Form className="p-5" onSubmit={loginSubmitHandler}>
+                        <h3>Login</h3>
+                        <Form.Group controlId="loginUsername">
+                            <Form.Label className="text-lg mt-3">Username:</Form.Label>
+                            <Form.Control className={"bg-light"}
+                                type="text"
+                                size="lg"
+                                value={userName}
+                                onChange={(e) => setuserName(e.target.value)}
+                                required
+                                minLength="5" />
+                        </Form.Group>
 
-            </div >
+                        <Form.Group controlId="loginPassword">
+                            <Form.Label className="text-lg mt-3">Password:</Form.Label>
+                            <Form.Control className={"bg-light"}
+                                type="password"
+                                size="xs"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                minLength="6" />
+                        </Form.Group>
+                        <Button className="mt-2" variant="success" type="submit">Submit</Button>
+                    </Form>
+                </Card>
+
+                <h4 style={{ color: "white" }} className="mt-3" >Don't have an account?</h4>
+                <Button variant="secondary" size="sm" href="/register">Register</Button>
+            </div>
         </>)
 
 }

@@ -5745,7 +5745,7 @@ const MainView = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationBar.NavigationBar), {
-                user: true,
+                user: user,
                 onLoggedOut: handleLogout
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
@@ -5754,11 +5754,11 @@ const MainView = ()=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                    className: "justify-content-md-center",
+                    className: "justify-content-md-center mt-3",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                                path: "/signup",
+                                path: "/register",
                                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                     children: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
                                         to: "/"
@@ -46689,7 +46689,6 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouter = require("react-router");
-var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
 const MovieView = ({ movies })=>{
     _s();
@@ -46782,22 +46781,6 @@ const MovieView = ({ movies })=>{
                 fileName: "src/components/movie-view/movie-view.jsx",
                 lineNumber: 18,
                 columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                to: `/`,
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                    variant: "warning",
-                    className: "back-button",
-                    children: "Back"
-                }, void 0, false, {
-                    fileName: "src/components/movie-view/movie-view.jsx",
-                    lineNumber: 20,
-                    columnNumber: 17
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 19,
-                columnNumber: 13
             }, undefined)
         ]
     }, void 0, true);
@@ -46816,7 +46799,7 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"prop-types":"7wKI2","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react-router":"dbWyW","react-router-dom":"9xmpe","react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hFosw":[function(require,module,exports) {
+},{"prop-types":"7wKI2","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react-router":"dbWyW","react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hFosw":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2447 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -46862,40 +46845,92 @@ const LoginView = ({ onLoggedIn })=>{
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "logIn",
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
-                className: "m-5",
-                onSubmit: loginSubmitHandler,
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                        children: "Login"
-                    }, void 0, false, {
-                        fileName: "src/components/login/login.jsx",
-                        lineNumber: 46,
-                        columnNumber: 21
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                        controlId: "loginUsername",
+            style: {
+                display: "grid",
+                justifyContent: "center"
+            },
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
+                    className: "mt-3",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
+                        className: "p-5",
+                        onSubmit: loginSubmitHandler,
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                                className: "text-lg mt-3",
-                                children: "Username:"
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                children: "Login"
                             }, void 0, false, {
                                 fileName: "src/components/login/login.jsx",
                                 lineNumber: 48,
                                 columnNumber: 25
                             }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                className: "bg-light",
-                                type: "text",
-                                size: "lg",
-                                value: userName,
-                                onChange: (e)=>setuserName(e.target.value),
-                                required: true,
-                                minLength: "5"
-                            }, void 0, false, {
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                                controlId: "loginUsername",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                        className: "text-lg mt-3",
+                                        children: "Username:"
+                                    }, void 0, false, {
+                                        fileName: "src/components/login/login.jsx",
+                                        lineNumber: 50,
+                                        columnNumber: 29
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                        className: "bg-light",
+                                        type: "text",
+                                        size: "lg",
+                                        value: userName,
+                                        onChange: (e)=>setuserName(e.target.value),
+                                        required: true,
+                                        minLength: "5"
+                                    }, void 0, false, {
+                                        fileName: "src/components/login/login.jsx",
+                                        lineNumber: 51,
+                                        columnNumber: 29
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
                                 fileName: "src/components/login/login.jsx",
                                 lineNumber: 49,
+                                columnNumber: 25
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                                controlId: "loginPassword",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                        className: "text-lg mt-3",
+                                        children: "Password:"
+                                    }, void 0, false, {
+                                        fileName: "src/components/login/login.jsx",
+                                        lineNumber: 61,
+                                        columnNumber: 29
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                        className: "bg-light",
+                                        type: "password",
+                                        size: "xs",
+                                        value: password,
+                                        onChange: (e)=>setPassword(e.target.value),
+                                        required: true,
+                                        minLength: "6"
+                                    }, void 0, false, {
+                                        fileName: "src/components/login/login.jsx",
+                                        lineNumber: 62,
+                                        columnNumber: 29
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/login/login.jsx",
+                                lineNumber: 60,
+                                columnNumber: 25
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                className: "mt-2",
+                                variant: "success",
+                                type: "submit",
+                                children: "Submit"
+                            }, void 0, false, {
+                                fileName: "src/components/login/login.jsx",
+                                lineNumber: 70,
                                 columnNumber: 25
                             }, undefined)
                         ]
@@ -46903,55 +46938,37 @@ const LoginView = ({ onLoggedIn })=>{
                         fileName: "src/components/login/login.jsx",
                         lineNumber: 47,
                         columnNumber: 21
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                        controlId: "loginPassword",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                                className: "text-lg mt-3",
-                                children: "Password:"
-                            }, void 0, false, {
-                                fileName: "src/components/login/login.jsx",
-                                lineNumber: 59,
-                                columnNumber: 25
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                className: "bg-light",
-                                type: "password",
-                                size: "lg",
-                                value: password,
-                                onChange: (e)=>setPassword(e.target.value),
-                                required: true,
-                                minLength: "6"
-                            }, void 0, false, {
-                                fileName: "src/components/login/login.jsx",
-                                lineNumber: 60,
-                                columnNumber: 25
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/login/login.jsx",
-                        lineNumber: 58,
-                        columnNumber: 21
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                        className: "mt-2",
-                        type: "submit",
-                        children: "Submit"
-                    }, void 0, false, {
-                        fileName: "src/components/login/login.jsx",
-                        lineNumber: 68,
-                        columnNumber: 21
                     }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/login/login.jsx",
-                lineNumber: 45,
-                columnNumber: 17
-            }, undefined)
-        }, void 0, false, {
+                }, void 0, false, {
+                    fileName: "src/components/login/login.jsx",
+                    lineNumber: 46,
+                    columnNumber: 17
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
+                    style: {
+                        color: "white"
+                    },
+                    className: "mt-3",
+                    children: "Don't have an account?"
+                }, void 0, false, {
+                    fileName: "src/components/login/login.jsx",
+                    lineNumber: 74,
+                    columnNumber: 17
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                    variant: "secondary",
+                    size: "sm",
+                    href: "/register",
+                    children: "Register"
+                }, void 0, false, {
+                    fileName: "src/components/login/login.jsx",
+                    lineNumber: 75,
+                    columnNumber: 17
+                }, undefined)
+            ]
+        }, void 0, true, {
             fileName: "src/components/login/login.jsx",
-            lineNumber: 44,
+            lineNumber: 45,
             columnNumber: 13
         }, undefined)
     }, void 0, false);
@@ -46987,6 +47004,8 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _constant = require("../../constants/constant");
 var _reactBootstrap = require("react-bootstrap");
+var _logoPng = require("../../css/logo.png");
+var _logoPngDefault = parcelHelpers.interopDefault(_logoPng);
 var _s = $RefreshSig$();
 const SignInView = ()=>{
     _s();
@@ -47019,154 +47038,164 @@ const SignInView = ()=>{
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "signIn",
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
-                className: "p-5",
-                onSubmit: registerSubmitHandler,
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                        children: "Sign In"
-                    }, void 0, false, {
-                        fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 48,
-                        columnNumber: 21
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                        controlId: "signupUsername",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                                className: "text-lg mt-3",
-                                children: "Username: "
-                            }, void 0, false, {
-                                fileName: "src/components/signIn/signIn.jsx",
-                                lineNumber: 50,
-                                columnNumber: 25
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                className: "bg-light",
-                                type: "text",
-                                value: userName,
-                                onChange: (e)=>setUserName(e.target.value),
-                                required: true,
-                                minLength: "5",
-                                size: "lg"
-                            }, void 0, false, {
-                                fileName: "src/components/signIn/signIn.jsx",
-                                lineNumber: 52,
-                                columnNumber: 25
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 49,
-                        columnNumber: 21
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                        controlId: "signupPassword",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                                className: "text-lg mt-3",
-                                children: "Password:"
-                            }, void 0, false, {
-                                fileName: "src/components/signIn/signIn.jsx",
-                                lineNumber: 63,
-                                columnNumber: 25
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                className: "bg-light",
-                                type: "password",
-                                size: "lg",
-                                value: password,
-                                onChange: (e)=>setPassword(e.target.value),
-                                required: true,
-                                minLength: "6"
-                            }, void 0, false, {
-                                fileName: "src/components/signIn/signIn.jsx",
-                                lineNumber: 64,
-                                columnNumber: 25
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 62,
-                        columnNumber: 21
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                        controlId: "signupEmail",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                                className: "text-lg mt-3",
-                                children: "Email:"
-                            }, void 0, false, {
-                                fileName: "src/components/signIn/signIn.jsx",
-                                lineNumber: 75,
-                                columnNumber: 25
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                className: "bg-light",
-                                type: "email",
-                                size: "lg",
-                                value: email,
-                                onChange: (e)=>setEmail(e.target.value),
-                                required: true
-                            }, void 0, false, {
-                                fileName: "src/components/signIn/signIn.jsx",
-                                lineNumber: 76,
-                                columnNumber: 25
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 74,
-                        columnNumber: 21
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                        controlId: "birth",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                                className: "text-lg mt-3",
-                                children: " DateOfBirth:"
-                            }, void 0, false, {
-                                fileName: "src/components/signIn/signIn.jsx",
-                                lineNumber: 85,
-                                columnNumber: 25
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                className: "bg-light",
-                                type: "date",
-                                size: "lg",
-                                value: birth,
-                                onChange: (e)=>SetDateOfBirth(e.target.value),
-                                required: true
-                            }, void 0, false, {
-                                fileName: "src/components/signIn/signIn.jsx",
-                                lineNumber: 86,
-                                columnNumber: 25
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 84,
-                        columnNumber: 21
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                        className: "mt-2",
-                        type: "submit",
-                        children: "Submit"
-                    }, void 0, false, {
-                        fileName: "src/components/signIn/signIn.jsx",
-                        lineNumber: 94,
-                        columnNumber: 21
-                    }, undefined)
-                ]
-            }, void 0, true, {
+            style: {
+                display: "grid",
+                justifyContent: "center"
+            },
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
+                className: "mt-3",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
+                    className: "p-3",
+                    onSubmit: registerSubmitHandler,
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                            children: "Register"
+                        }, void 0, false, {
+                            fileName: "src/components/signIn/signIn.jsx",
+                            lineNumber: 48,
+                            columnNumber: 25
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                            controlId: "signupUsername",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                    className: "text-lg mt-3",
+                                    children: "Username: "
+                                }, void 0, false, {
+                                    fileName: "src/components/signIn/signIn.jsx",
+                                    lineNumber: 50,
+                                    columnNumber: 29
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                    className: "bg-light",
+                                    type: "text",
+                                    value: userName,
+                                    onChange: (e)=>setUserName(e.target.value),
+                                    required: true,
+                                    minLength: "5",
+                                    size: "lg"
+                                }, void 0, false, {
+                                    fileName: "src/components/signIn/signIn.jsx",
+                                    lineNumber: 52,
+                                    columnNumber: 29
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/signIn/signIn.jsx",
+                            lineNumber: 49,
+                            columnNumber: 25
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                            controlId: "signupPassword",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                    className: "text-lg mt-3",
+                                    children: "Password:"
+                                }, void 0, false, {
+                                    fileName: "src/components/signIn/signIn.jsx",
+                                    lineNumber: 63,
+                                    columnNumber: 29
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                    className: "bg-light",
+                                    type: "password",
+                                    size: "lg",
+                                    value: password,
+                                    onChange: (e)=>setPassword(e.target.value),
+                                    required: true,
+                                    minLength: "6"
+                                }, void 0, false, {
+                                    fileName: "src/components/signIn/signIn.jsx",
+                                    lineNumber: 64,
+                                    columnNumber: 29
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/signIn/signIn.jsx",
+                            lineNumber: 62,
+                            columnNumber: 25
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                            controlId: "signupEmail",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                    className: "text-lg mt-3",
+                                    children: "Email:"
+                                }, void 0, false, {
+                                    fileName: "src/components/signIn/signIn.jsx",
+                                    lineNumber: 75,
+                                    columnNumber: 29
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                    className: "bg-light",
+                                    type: "email",
+                                    size: "lg",
+                                    value: email,
+                                    onChange: (e)=>setEmail(e.target.value),
+                                    required: true
+                                }, void 0, false, {
+                                    fileName: "src/components/signIn/signIn.jsx",
+                                    lineNumber: 76,
+                                    columnNumber: 29
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/signIn/signIn.jsx",
+                            lineNumber: 74,
+                            columnNumber: 25
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                            controlId: "birth",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                    className: "text-lg mt-3",
+                                    children: " DateOfBirth:"
+                                }, void 0, false, {
+                                    fileName: "src/components/signIn/signIn.jsx",
+                                    lineNumber: 85,
+                                    columnNumber: 29
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                    className: "bg-light",
+                                    type: "date",
+                                    size: "lg",
+                                    value: birth,
+                                    onChange: (e)=>SetDateOfBirth(e.target.value),
+                                    required: true
+                                }, void 0, false, {
+                                    fileName: "src/components/signIn/signIn.jsx",
+                                    lineNumber: 86,
+                                    columnNumber: 29
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/signIn/signIn.jsx",
+                            lineNumber: 84,
+                            columnNumber: 25
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                            className: "mt-3",
+                            type: "submit",
+                            children: "Submit"
+                        }, void 0, false, {
+                            fileName: "src/components/signIn/signIn.jsx",
+                            lineNumber: 94,
+                            columnNumber: 25
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/signIn/signIn.jsx",
+                    lineNumber: 47,
+                    columnNumber: 21
+                }, undefined)
+            }, void 0, false, {
                 fileName: "src/components/signIn/signIn.jsx",
-                lineNumber: 47,
+                lineNumber: 46,
                 columnNumber: 17
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/signIn/signIn.jsx",
-            lineNumber: 46,
+            lineNumber: 45,
             columnNumber: 13
         }, undefined)
     }, void 0, false);
@@ -47181,139 +47210,10 @@ $RefreshReg$(_c, "SignInView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../constants/constant":"2GHzz","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lJZlQ":[function() {},{}],"bsPVM":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$abf5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$abf5.prelude(module);
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../constants/constant":"2GHzz","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../css/logo.png":"5OS64"}],"5OS64":[function(require,module,exports) {
+module.exports = require("8bb6203b453dea83").getBundleURL("byUka") + "logo.3ef2f8fd.png" + "?" + Date.now();
 
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "NavigationBar", ()=>NavigationBar);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _reactBootstrap = require("react-bootstrap");
-var _coverPng = require("../../css/cover.png");
-var _coverPngDefault = parcelHelpers.interopDefault(_coverPng);
-const NavigationBar = ({ user, onLoggedOut })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar), {
-            bg: "black",
-            "data-bs-theme": "dark",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Brand, {
-                    href: "#",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Image), {
-                        className: "m-1",
-                        src: (0, _coverPngDefault.default),
-                        height: 50
-                    }, void 0, false, {
-                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                        lineNumber: 10,
-                        columnNumber: 44
-                    }, undefined)
-                }, void 0, false, {
-                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 10,
-                    columnNumber: 21
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Toggle, {
-                            "aria-controls": "basic-navbar-nav"
-                        }, void 0, false, {
-                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                            lineNumber: 12,
-                            columnNumber: 25
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Collapse, {
-                            id: "basic-navbar-nav",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav), {
-                                    className: "me-auto",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                            style: {
-                                                color: "white"
-                                            },
-                                            href: "/movies",
-                                            children: "Movies"
-                                        }, void 0, false, {
-                                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                            lineNumber: 15,
-                                            columnNumber: 33
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                            style: {
-                                                color: "white"
-                                            },
-                                            href: "/profile",
-                                            children: "Profile"
-                                        }, void 0, false, {
-                                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                            lineNumber: 16,
-                                            columnNumber: 33
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                    lineNumber: 14,
-                                    columnNumber: 29
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Item, {
-                                    className: "ml-auto",
-                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                        className: "float-right",
-                                        style: {
-                                            background: "gray",
-                                            border: "none"
-                                        },
-                                        size: "sm",
-                                        onClick: onLoggedOut,
-                                        children: " Logout"
-                                    }, void 0, false, {
-                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 20,
-                                        columnNumber: 33
-                                    }, undefined)
-                                }, void 0, false, {
-                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                    lineNumber: 19,
-                                    columnNumber: 29
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                            lineNumber: 13,
-                            columnNumber: 25
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 11,
-                    columnNumber: 21
-                }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 9,
-            columnNumber: 17
-        }, undefined)
-    }, void 0, false);
-};
-_c = NavigationBar;
-var _c;
-$RefreshReg$(_c, "NavigationBar");
-
-  $parcel$ReactRefreshHelpers$abf5.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","../../css/cover.png":"6IpwY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6IpwY":[function(require,module,exports) {
-module.exports = require("79da1a17a65cb1b4").getBundleURL("byUka") + "cover.220853b6.png" + "?" + Date.now();
-
-},{"79da1a17a65cb1b4":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+},{"8bb6203b453dea83":"lgJ39"}],"lgJ39":[function(require,module,exports) {
 "use strict";
 var bundleURL = {};
 function getBundleURLCached(id) {
@@ -47348,7 +47248,225 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}],"lJZlQ":[function() {},{}],"lOjBx":[function(require,module,exports) {
+},{}],"lJZlQ":[function() {},{}],"bsPVM":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$abf5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$abf5.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "NavigationBar", ()=>NavigationBar);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _reactBootstrap = require("react-bootstrap");
+var _logoPng = require("../../css/logo.png");
+var _logoPngDefault = parcelHelpers.interopDefault(_logoPng);
+var _reactRouterDom = require("react-router-dom");
+const NavigationBar = ({ user, onLoggedOut })=>{
+    console.log("user is:", user);
+    if (user !== null) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar), {
+            bg: "black",
+            "data-bs-theme": "dark",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Brand, {
+                    href: "#",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Image), {
+                        src: (0, _logoPngDefault.default),
+                        height: 45,
+                        style: {
+                            color: "white",
+                            marginLeft: "8px"
+                        }
+                    }, void 0, false, {
+                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                        lineNumber: 12,
+                        columnNumber: 48
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                    lineNumber: 12,
+                    columnNumber: 25
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Toggle, {
+                            "aria-controls": "basic-navbar-nav"
+                        }, void 0, false, {
+                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                            lineNumber: 14,
+                            columnNumber: 29
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Collapse, {
+                            id: "basic-navbar-nav",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav), {
+                                    className: "me-auto",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
+                                            style: {
+                                                color: "white"
+                                            },
+                                            href: "/",
+                                            children: "Movies"
+                                        }, void 0, false, {
+                                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                            lineNumber: 17,
+                                            columnNumber: 37
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
+                                            style: {
+                                                color: "white"
+                                            },
+                                            href: "/profile",
+                                            children: "Profile"
+                                        }, void 0, false, {
+                                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                            lineNumber: 19,
+                                            columnNumber: 37
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                    lineNumber: 16,
+                                    columnNumber: 33
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Item, {
+                                    className: "ml-auto",
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                        className: "float-right",
+                                        style: {
+                                            background: "gray",
+                                            border: "none"
+                                        },
+                                        size: "sm",
+                                        onClick: onLoggedOut,
+                                        children: " Logout"
+                                    }, void 0, false, {
+                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                        lineNumber: 22,
+                                        columnNumber: 37
+                                    }, undefined)
+                                }, void 0, false, {
+                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                    lineNumber: 21,
+                                    columnNumber: 33
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                            lineNumber: 15,
+                            columnNumber: 29
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                    lineNumber: 13,
+                    columnNumber: 25
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 11,
+            columnNumber: 21
+        }, undefined)
+    }, void 0, false);
+    else return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: !user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar), {
+            bg: "black",
+            "data-bs-theme": "dark",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Brand, {
+                    href: "#",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Image), {
+                        src: (0, _logoPngDefault.default),
+                        height: 45,
+                        style: {
+                            color: "white",
+                            marginLeft: "8px"
+                        }
+                    }, void 0, false, {
+                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                        lineNumber: 35,
+                        columnNumber: 48
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                    lineNumber: 35,
+                    columnNumber: 25
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Toggle, {
+                            "aria-controls": "basic-navbar-nav"
+                        }, void 0, false, {
+                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                            lineNumber: 37,
+                            columnNumber: 29
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Collapse, {
+                            id: "basic-navbar-nav",
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav), {
+                                className: "me-auto",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
+                                        style: {
+                                            color: "white"
+                                        },
+                                        href: "/register",
+                                        children: "Register"
+                                    }, void 0, false, {
+                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                        lineNumber: 40,
+                                        columnNumber: 37
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
+                                        style: {
+                                            color: "white"
+                                        },
+                                        href: "/login",
+                                        children: "Login"
+                                    }, void 0, false, {
+                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                        lineNumber: 41,
+                                        columnNumber: 37
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                lineNumber: 39,
+                                columnNumber: 33
+                            }, undefined)
+                        }, void 0, false, {
+                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                            lineNumber: 38,
+                            columnNumber: 29
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                    lineNumber: 36,
+                    columnNumber: 25
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 34,
+            columnNumber: 21
+        }, undefined)
+    }, void 0, false);
+};
+_c = NavigationBar;
+var _c;
+$RefreshReg$(_c, "NavigationBar");
+
+  $parcel$ReactRefreshHelpers$abf5.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../css/logo.png":"5OS64","react-router-dom":"9xmpe"}],"lJZlQ":[function() {},{}],"lOjBx":[function(require,module,exports) {
 "use strict";
 var m = require("aaccff5d309d9239");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;

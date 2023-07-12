@@ -1,9 +1,8 @@
 import React from "react"
 import { useState } from "react"
 import { BaseUrl } from "../../constants/constant"
-import { Form, Button } from "react-bootstrap"
-
-
+import { Form, Button, Card, Nav, Image } from "react-bootstrap"
+import logo from "../../css/logo.png"
 
 export const SignInView = () => {
     const [userName, setUserName] = useState("");
@@ -43,56 +42,58 @@ export const SignInView = () => {
 
     return (
         <>
-            <div className="signIn">
-                <Form className="p-5" onSubmit={registerSubmitHandler}>
-                    <h3>Sign In</h3>
-                    <Form.Group controlId="signupUsername">
-                        <Form.Label className="text-lg mt-3">
-                            Username: </Form.Label>
-                        <Form.Control className={"bg-light"}
-                            type="text"
-                            value={userName}
-                            onChange={(e) => setUserName(e.target.value)}
-                            required
-                            minLength="5"
-                            size="lg"
-                        />
+            <div style={{ display: "grid", justifyContent: "center" }}>
+                <Card className="mt-3">
+                    <Form className="p-3" onSubmit={registerSubmitHandler}>
+                        <h3>Register</h3>
+                        <Form.Group controlId="signupUsername">
+                            <Form.Label className="text-lg mt-3">
+                                Username: </Form.Label>
+                            <Form.Control className={"bg-light"}
+                                type="text"
+                                value={userName}
+                                onChange={(e) => setUserName(e.target.value)}
+                                required
+                                minLength="5"
+                                size="lg"
+                            />
 
-                    </Form.Group>
-                    <Form.Group controlId="signupPassword">
-                        <Form.Label className="text-lg mt-3">Password:</Form.Label>
-                        <Form.Control className={"bg-light"}
-                            type="password"
-                            size="lg"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                            minLength="6"
-                        />
+                        </Form.Group>
+                        <Form.Group controlId="signupPassword">
+                            <Form.Label className="text-lg mt-3">Password:</Form.Label>
+                            <Form.Control className={"bg-light"}
+                                type="password"
+                                size="lg"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                minLength="6"
+                            />
 
-                    </Form.Group>
-                    <Form.Group controlId="signupEmail">
-                        <Form.Label className="text-lg mt-3">Email:</Form.Label>
-                        <Form.Control className={"bg-light"}
-                            type="email"
-                            size="lg"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="birth">
-                        <Form.Label className="text-lg mt-3"> DateOfBirth:</Form.Label>
-                        <Form.Control className={"bg-light"}
-                            type="date"
-                            size="lg"
-                            value={birth}
-                            onChange={(e) => SetDateOfBirth(e.target.value)}
-                            required
-                        />
-                    </Form.Group>
-                    <Button className="mt-2" type="submit">Submit</Button>
-                </Form >
+                        </Form.Group>
+                        <Form.Group controlId="signupEmail">
+                            <Form.Label className="text-lg mt-3">Email:</Form.Label>
+                            <Form.Control className={"bg-light"}
+                                type="email"
+                                size="lg"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="birth">
+                            <Form.Label className="text-lg mt-3"> DateOfBirth:</Form.Label>
+                            <Form.Control className={"bg-light"}
+                                type="date"
+                                size="lg"
+                                value={birth}
+                                onChange={(e) => SetDateOfBirth(e.target.value)}
+                                required
+                            />
+                        </Form.Group>
+                        <Button className="mt-3" type="submit">Submit</Button>
+                    </Form >
+                </Card>
             </div >
         </>
     )

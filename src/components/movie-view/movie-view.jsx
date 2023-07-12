@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom'
+
 
 export const MovieView = ({ movies }) => {
     const { movieId } = useParams();
@@ -16,9 +16,7 @@ export const MovieView = ({ movies }) => {
             <div className='movieDescriptionHeader'>{movie.directorBio}</div>
             <div className='movieDescriptionHeader'><span>Description: </span > {movie.genreDescription}</div >
             <div className='movieDescriptionHeader'>{movie.description}</div>
-            <Link to={`/`}>
-                <Button variant="warning" className="back-button">Back</Button>
-            </Link>
+
         </>
     )
 }

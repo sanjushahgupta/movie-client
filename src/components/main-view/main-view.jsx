@@ -52,13 +52,13 @@ export const MainView = () => {
     return (
         <>
             <NavigationBar
-                user
+                user={user}
                 onLoggedOut={handleLogout} />
             <BrowserRouter>
-                <Row className="justify-content-md-center">
+                <Row className="justify-content-md-center mt-3">
                     <Routes>
                         <Route
-                            path="/signup"
+                            path="/register"
                             element={
                                 <>
                                     {user ? (
