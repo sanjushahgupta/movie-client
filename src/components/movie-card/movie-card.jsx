@@ -4,7 +4,6 @@ import { Card, CardImg, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie }) => {
-
     return <>
         <Link style={{ textDecoration: 'none', color: 'black' }} to={`/movies/${encodeURIComponent(movie.id)}`}>
             <Card className='movieCard'>

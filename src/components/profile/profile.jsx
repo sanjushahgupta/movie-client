@@ -1,53 +1,71 @@
-import React from "react"
-import { useState } from "react"
-import { BaseUrl } from "../../constants/constant"
-import { Form, Button, Card, Nav, Image } from "react-bootstrap"
-import logo from "../../css/logo.png"
+import React, { useState, useEffect } from "react";
+import { BaseUrl } from "../../constants/constant";
+import { Form, Button, Card } from "react-bootstrap"
 
-export const SignInView = () => {
-    const [userName, setUserName] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [birth, SetDateOfBirth] = useState("");
-    
+export const ProfileView = ({ }) => {
+    var loggedInUser = JSON.parse(localStorage.getItem('user'))
+    const storedToken = localStorage.getItem("token");
+    const [user, setUser] = useState(loggedInUser);
+    const [userName, setUserName] = useState(user.userName);
+    const [password, setPassword] = useState("12345678");
+    const [email, setEmail] = useState(user.email);
+    const [birth, SetDateOfBirth] = useState(user.birth);
 
 
-    registerSubmitHandler = (event) => {
+    const profileSubmitHandler = (event) => {
         event.preventDefault();
-
         const reqBody = {
             userName: userName,
             password: password,
             email: email,
             birth: birth
-        }
+        };
 
-        fetch(BaseUrl + "/register", {
-            method: "POST",
-            body: JSON.stringify(reqBody),
-            headers: {
-                "Content-Type": "application/json"
-            }
+        fetch(BaseUrl + "/updateUser", {
+            headers: { Authorization: `Bearer ${storedToken}` },
+            method: "PUT",
+            body: JSON.stringify(reqBody)
         }).then((response) => {
             if (response.status == 200) {
-                alert("Signup successful");
+                alert("Updated successful");
                 window.location.reload();
             } else {
                 alert("Unable to register. Please check your credentials.");
+                window.location.reload();
             }
         }).catch(e => {
             console.log("error: ", e)
         });
-    };
 
-
+    }
+    /*  useEffect(() => {
+          fetch(BaseUrl + "/users").then((response) => response.json())
+              .then((data) => {
+                  if (data.userName == loggedInUser.userName) {
+  
+                      setUser(data)
+                  }
+              })
+              .catch((error) => {
+                  console.log("error", error);
+              });
+      },);
+      console.log("data is", user)
+      const profileSubmitHandler = () => {
+  
+      }*/
     return (
         <>
+            <div style={{ color: "white" }}>
+                <p >User: {userName} </p>
+                <p>Email: {email}</p>
+                <p>favoriteMovies: {user.favoriteMovies}</p>
+            </div>
             <div style={{ display: "grid", justifyContent: "center" }}>
                 <Card className="mt-3">
-                    <Form className="p-3" onSubmit={registerSubmitHandler}>
-                        <h3>Register</h3>
-                        <Form.Group controlId="signupUsername">
+                    < Form className="p-3" onSubmit={profileSubmitHandler} >
+                        <h3>Update Profile</h3>
+                        <Form.Group controlId="profileUsername">
                             <Form.Label className="text-lg mt-3">
                                 Username: </Form.Label>
                             <Form.Control className={"bg-light"}
@@ -60,7 +78,7 @@ export const SignInView = () => {
                             />
 
                         </Form.Group>
-                        <Form.Group controlId="signupPassword">
+                        <Form.Group controlId="profilePassword">
                             <Form.Label className="text-lg mt-3">Password:</Form.Label>
                             <Form.Control className={"bg-light"}
                                 type="password"
@@ -72,7 +90,7 @@ export const SignInView = () => {
                             />
 
                         </Form.Group>
-                        <Form.Group controlId="signupEmail">
+                        <Form.Group controlId="profileEmail">
                             <Form.Label className="text-lg mt-3">Email:</Form.Label>
                             <Form.Control className={"bg-light"}
                                 type="email"
@@ -82,7 +100,7 @@ export const SignInView = () => {
                                 required
                             />
                         </Form.Group>
-                        <Form.Group controlId="birth">
+                        <Form.Group controlId="profileBirth">
                             <Form.Label className="text-lg mt-3"> DateOfBirth:</Form.Label>
                             <Form.Control className={"bg-light"}
                                 type="date"
@@ -92,11 +110,11 @@ export const SignInView = () => {
                                 required
                             />
                         </Form.Group>
-                        <Button className="mt-3" type="submit">Submit</Button>
+                        <Button className="mt-3" type="submit">Update</Button>
                     </Form >
                 </Card>
-            </div >
+            </div>
         </>
     )
-
 }
+

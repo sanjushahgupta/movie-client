@@ -5,6 +5,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login/login";
 import { SignInView } from "../signIn/signIn";
+import { ProfileView } from "../profile/profile";
 import { BaseUrl } from "../../constants/constant";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Row, Col, Container, Navbar, Button, Image } from "react-bootstrap"
@@ -121,6 +122,16 @@ export const MainView = () => {
                                             </Row>
                                         </>
                                     )}
+                                </>
+                            }
+                        />
+                        <Route
+                            path="/profile"
+                            element={
+                                <>
+                                    <Col>
+                                        <ProfileView />
+                                    </Col>
                                 </>
                             }
                         />
