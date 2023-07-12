@@ -3,7 +3,6 @@ import logo from "../../css/logo.png"
 import { Link } from 'react-router-dom'
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
-    console.log("user is:", user)
     if (user !== null) {
         return (
             <>

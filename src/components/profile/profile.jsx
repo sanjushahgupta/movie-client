@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import { BaseUrl } from "../../constants/constant";
 import { Form, Button, Card } from "react-bootstrap"
 
-export const ProfileView = ({ }) => {
+export const ProfileView = () => {
     var loggedInUser = JSON.parse(localStorage.getItem('user'))
     const storedToken = localStorage.getItem("token");
+    const [token, setToken] = useState(storedToken ? storedToken : null);
     const [user, setUser] = useState(loggedInUser);
     const [userName, setUserName] = useState(user.userName);
-    const [password, setPassword] = useState("12345678");
+    const [password, setPassword] = useState(null);
     const [email, setEmail] = useState(user.email);
     const [birth, SetDateOfBirth] = useState(user.birth);
 
 
     const profileSubmitHandler = (event) => {
         event.preventDefault();
+
         const reqBody = {
             userName: userName,
             password: password,
@@ -22,7 +24,10 @@ export const ProfileView = ({ }) => {
         };
 
         fetch(BaseUrl + "/updateUser", {
-            headers: { Authorization: `Bearer ${storedToken}` },
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
             method: "PUT",
             body: JSON.stringify(reqBody)
         }).then((response) => {
@@ -30,7 +35,7 @@ export const ProfileView = ({ }) => {
                 alert("Updated successful");
                 window.location.reload();
             } else {
-                alert("Unable to register. Please check your credentials.");
+                alert("Unable to update profile. Please check your credentails and username and email must be unique.");
                 window.location.reload();
             }
         }).catch(e => {
@@ -70,7 +75,7 @@ export const ProfileView = ({ }) => {
                                 Username: </Form.Label>
                             <Form.Control className={"bg-light"}
                                 type="text"
-                                value={userName}
+                                defaultValue={userName}
                                 onChange={(e) => setUserName(e.target.value)}
                                 required
                                 minLength="5"
@@ -83,7 +88,7 @@ export const ProfileView = ({ }) => {
                             <Form.Control className={"bg-light"}
                                 type="password"
                                 size="lg"
-                                value={password}
+                                defaultValue={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                                 minLength="6"
@@ -95,7 +100,7 @@ export const ProfileView = ({ }) => {
                             <Form.Control className={"bg-light"}
                                 type="email"
                                 size="lg"
-                                value={email}
+                                defaultValue={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
                             />
@@ -105,7 +110,7 @@ export const ProfileView = ({ }) => {
                             <Form.Control className={"bg-light"}
                                 type="date"
                                 size="lg"
-                                value={birth}
+                                defaultValue={birth}
                                 onChange={(e) => SetDateOfBirth(e.target.value)}
                                 required
                             />
