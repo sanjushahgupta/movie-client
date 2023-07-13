@@ -8,7 +8,7 @@ import { SignInView } from "../signIn/signIn";
 import { ProfileView } from "../profile/profile";
 import { BaseUrl } from "../../constants/constant";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Row, Col, Container, Navbar, Button, Image } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap"
 import "../../index.scss"
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 
@@ -23,7 +23,6 @@ export const MainView = () => {
         setUser(null);
         setToken(null);
         localStorage.clear();
-        window.location.reload();
     };
 
     useEffect(() => {
@@ -129,9 +128,16 @@ export const MainView = () => {
                             path="/profile"
                             element={
                                 <>
-                                    <Col>
-                                        <ProfileView movies={movies} />
-                                    </Col>
+                                    {!user ? (
+                                        <Navigate to="/login" replace />
+                                    ) : movies.length === 0 ? (
+                                        <Col>The list is empty!</Col>
+                                    ) : (
+                                        <Col>
+                                            <ProfileView movies={movies} />
+                                        </Col>
+                                    )}
+
                                 </>
                             }
                         />

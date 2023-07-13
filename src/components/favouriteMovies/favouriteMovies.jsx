@@ -39,16 +39,21 @@ export const FavoriteMovies = ({ user, movies }) => {
     };
     return (
         <>
-            <h3 style={{ textAlign: "center" }}>Favourites Movies</h3>
-            <Row className="justify-content-md-center">
-                {
-                    favMovies.map((movie) => (
-                        <Col className="mb-5" key={movie.id} md="auto">
-                            <MovieCard movie={movie} />
-                            <Button onClick={(event) => removeFavHandler(movie.title, event)} variant="danger" size="xs">Remove</Button>
-                        </Col>
-                    ))}
-            </Row>
+            {
+                favMovies.length > 0 && (
+                    <>
+                        <h3 style={{ textAlign: "center", color: "white" }}>Favourites Movies</h3>
+                        <Row className="justify-content-md-center">
+                            {
+                                favMovies.map((movie) => (
+                                    <Col className="mb-5" key={movie.id} md="auto">
+                                        <MovieCard movie={movie} />
+                                        <Button onClick={(event) => removeFavHandler(movie.title, event)} variant="danger" size="xs">Remove</Button>
+                                    </Col>
+                                ))}
+                        </Row>
+                    </>)
+            }
         </>
     )
 }
