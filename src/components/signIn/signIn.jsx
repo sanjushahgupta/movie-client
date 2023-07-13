@@ -9,7 +9,7 @@ export const SignInView = () => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [birth, SetDateOfBirth] = useState("");
-    
+    const token = localStorage.getItem("token");
 
 
     registerSubmitHandler = (event) => {

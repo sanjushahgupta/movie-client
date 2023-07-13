@@ -130,7 +130,7 @@ export const MainView = () => {
                             element={
                                 <>
                                     <Col>
-                                        <ProfileView />
+                                        <ProfileView movies={movies} />
                                     </Col>
                                 </>
                             }

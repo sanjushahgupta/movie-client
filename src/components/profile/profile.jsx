@@ -1,8 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { BaseUrl } from "../../constants/constant";
-import { Form, Button, Card } from "react-bootstrap"
+import { FavoriteMovies } from "../favouriteMovies/favouriteMovies"
 
-export const ProfileView = () => {
+import React, { useState, useEffect } from "react";
+import { BaseUrl } from "../../constants/constant";
+
+export const ProfileView = ({ movies }) => {
+    const [user, setUser] = useState(null);
+    var loggedInUser = JSON.parse(localStorage.getItem('user'))
+    var loggedInUsername = loggedInUser.userName;
+    useEffect(() => {
+        fetch(BaseUrl + "/users", {
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then((response) => response.json())
+            .then((users) => {
+                const matchedUser = users.find((user) => user.userName === loggedInUsername);
+                setUser(matchedUser);
+            })
+            .catch((error) => {
+                console.log("error", error);
+            });
+    }, [loggedInUsername]);
+
+    if (!user) {
+        return <div>Loading user data</div>;
+    }
+
+    return (
+        <>
+            <div style={{ color: "white" }}>
+                <div>Username: {user.userName}</div>
+                <div>Email: {user.Email}</div>
+                <FavoriteMovies
+                    user={user}
+                    movies={movies}
+                />
+            </div>
+        </>
+    )
+
+}
+/*export const ProfileView = () => {
     var loggedInUser = JSON.parse(localStorage.getItem('user'))
     const storedToken = localStorage.getItem("token");
     const [token, setToken] = useState(storedToken ? storedToken : null);
@@ -33,38 +73,23 @@ export const ProfileView = () => {
         }).then((response) => {
             if (response.status == 200) {
                 alert("Updated successful");
-                window.location.reload();
+
             } else {
+                console.log(response)
                 alert("Unable to update profile. Please check your credentails and username and email must be unique.");
-                window.location.reload();
             }
         }).catch(e => {
             console.log("error: ", e)
         });
 
     }
-    /*  useEffect(() => {
-          fetch(BaseUrl + "/users").then((response) => response.json())
-              .then((data) => {
-                  if (data.userName == loggedInUser.userName) {
-  
-                      setUser(data)
-                  }
-              })
-              .catch((error) => {
-                  console.log("error", error);
-              });
-      },);
-      console.log("data is", user)
-      const profileSubmitHandler = () => {
-  
-      }*/
+
     return (
         <>
+            <FavoriteMovies />
             <div style={{ color: "white" }}>
                 <p >User: {userName} </p>
                 <p>Email: {email}</p>
-                <p>favoriteMovies: {user.favoriteMovies}</p>
             </div>
             <div style={{ display: "grid", justifyContent: "center" }}>
                 <Card className="mt-3">
@@ -75,7 +100,7 @@ export const ProfileView = () => {
                                 Username: </Form.Label>
                             <Form.Control className={"bg-light"}
                                 type="text"
-                                defaultValue={userName}
+                                value={userName}
                                 onChange={(e) => setUserName(e.target.value)}
                                 required
                                 minLength="5"
@@ -88,7 +113,7 @@ export const ProfileView = () => {
                             <Form.Control className={"bg-light"}
                                 type="password"
                                 size="lg"
-                                defaultValue={password}
+                                value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                                 minLength="6"
@@ -100,7 +125,7 @@ export const ProfileView = () => {
                             <Form.Control className={"bg-light"}
                                 type="email"
                                 size="lg"
-                                defaultValue={email}
+                                value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
                             />
@@ -110,7 +135,7 @@ export const ProfileView = () => {
                             <Form.Control className={"bg-light"}
                                 type="date"
                                 size="lg"
-                                defaultValue={birth}
+                                value={birth}
                                 onChange={(e) => SetDateOfBirth(e.target.value)}
                                 required
                             />
@@ -121,5 +146,4 @@ export const ProfileView = () => {
             </div>
         </>
     )
-}
-
+}*/
