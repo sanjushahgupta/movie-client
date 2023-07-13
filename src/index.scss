@@ -1,5 +1,50 @@
-$color: steelblue;
+$primary: SeaGreen;
+$body-bg: #530f0f;
+$color: rgb(250, 247, 247);
+@import '~bootstrap/scss/bootstrap.scss';
 
-.movie {
-    color: $color;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.color-nav {
+    background-color: black;
+
+    .text-nav {
+        color: #ebe8e8;
+        font-size: 18px;
+        margin-left: 20px;
+    }
+}
+
+.movieDescriptionHeader {
+    span {
+        color: #ffff;
+        font-weight: bold;
+    }
+
+    color: #ffff;
+    font-size: 20px;
+    margin: 8px;
+}
+
+.signIn {
+    color: #ebe8e8;
+}
+
+.logIn {
+    color: #ebe8e8;
+    height: 100vh;
+
+}
+
+.wrapper {
+    height: 100vh;
+}
+
+.movieCard {
+    width: 15rem;
+    height: 18rem;
 }

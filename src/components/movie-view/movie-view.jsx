@@ -1,16 +1,18 @@
 import PropTypes from 'prop-types';
+import { Card } from 'react-bootstrap';
 
-export const MovieView = ({ selectedMovie, onBackButtonClick }) => {
-    return (<div>
-        <div><img src={selectedMovie.image} /></div>
-        <div>
-            <div>Title: {selectedMovie.title}</div>
-            <div>Description: {selectedMovie.description}</div>
-            <div>Genre: {selectedMovie.genre}</div>
-            <div>Director: {selectedMovie.director}</div>
-            <button onClick={onBackButtonClick}>Back</button>
-        </div>
-    </div>
+export const MovieView = ({ selectedMovie }) => {
+    return (
+        <>
+            <Card style={{ maxWidth: "50rem" }}>
+                <Card.Img className="img-fluid" src={selectedMovie.image} alt="movieImg" />
+            </Card>
+            <div className='movieDescriptionHeader'><span>Title: </span>{selectedMovie.title}</div>
+            <div className='movieDescriptionHeader'><span>Director: </span > {selectedMovie.director}</div >
+            <div className='movieDescriptionHeader'>{selectedMovie.directorBio}</div>
+            <div className='movieDescriptionHeader'><span>Description: </span > {selectedMovie.genreDescription}</div >
+            <div className='movieDescriptionHeader'>{selectedMovie.description}</div>
+        </>
     )
 }
 
