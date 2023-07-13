@@ -1,7 +1,10 @@
 
 import React, { useState } from "react";
-import { Form, Card, Form, Button } from "react-bootstrap";
+import { Form, Card, Form, Button, Row } from "react-bootstrap";
 import { BaseUrl } from "../../constants/constant";
+import { DeleteAccount } from "../deleteUser/deleteUser";
+
+
 export const UpdateProfile = ({ Passeduser }) => {
     var loggedInUser = JSON.parse(localStorage.getItem('user'))
     const token = localStorage.getItem("token");
@@ -44,15 +47,18 @@ export const UpdateProfile = ({ Passeduser }) => {
             .catch((e) => {
                 alert("Something went wrong");
             })
+
     }
-
-
     return (
         <>
+
             <div style={{ display: "block", marginBottom: "30px", width: "60%", color: "black" }}>
                 <Card className="mt-3">
                     < Form className="p-3" onSubmit={updateSubmitHandler} >
                         <h3>Update Profile</h3>
+                        <div className="text-end">
+                            <Button variant="danger" onClick={DeleteAccount}>Delete Account</Button>
+                        </div>
                         <Form.Group controlId="profileUsername">
                             <Form.Label className="text-lg mt-3">
                                 Username: </Form.Label>
@@ -78,16 +84,7 @@ export const UpdateProfile = ({ Passeduser }) => {
                             />
 
                         </Form.Group>
-                        <Form.Group controlId="profileEmail">
-                            <Form.Label className="text-lg mt-3">Email:</Form.Label>
-                            <Form.Control className={"bg-light"}
-                                type="email"
-                                size="lg"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-                        </Form.Group>
+
                         <Form.Group controlId="profileBirth">
                             <Form.Label className="text-lg mt-3"> DateOfBirth:</Form.Label>
                             <Form.Control className={"bg-light"}
@@ -98,10 +95,22 @@ export const UpdateProfile = ({ Passeduser }) => {
                                 required
                             />
                         </Form.Group>
+                        <Form.Group controlId="profileEmail">
+                            <Form.Label className="text-lg mt-3">Email:</Form.Label>
+                            <Form.Control className={"bg-light"}
+                                type="email"
+                                size="lg"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </Form.Group>
                         <Button className="mt-3" type="submit">Update</Button>
                     </Form >
+
                 </Card>
-            </div>
+
+            </div >
         </>
     )
 }

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BaseUrl } from "../../constants/constant";
 import { FavoriteMovies } from "../favouriteMovies/favouriteMovies"
-import { Col, Button, Row } from "react-bootstrap"
-
-import React, { useState, useEffect } from "react";
+import { Row } from "react-bootstrap"
 import { UpdateProfile } from "../updateProfile/updateProfile"
 
 
