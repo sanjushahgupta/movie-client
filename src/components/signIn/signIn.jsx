@@ -1,21 +1,16 @@
 import React from "react"
 import { useState } from "react"
 import { BaseUrl } from "../../constants/constant"
-import { Form, Button, Card, Nav, Image } from "react-bootstrap"
-import logo from "../../css/logo.png"
-import { LoginView } from "../login/login"
+import { Form, Button, Card } from "react-bootstrap"
 
 export const SignInView = () => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [birth, SetDateOfBirth] = useState("");
-    const token = localStorage.getItem("token");
-
 
     registerSubmitHandler = (event) => {
         event.preventDefault();
-
         const reqBody = {
             userName: userName,
             password: password,
@@ -31,6 +26,7 @@ export const SignInView = () => {
             }
         }).then((response) => {
             if (response.status == 200) {
+                window.location.href = "/login";
                 alert("Account created.");
             } else {
                 alert("Unable to register. Please check your credentials.");
@@ -91,7 +87,7 @@ export const SignInView = () => {
                                 required
                             />
                         </Form.Group>
-                        <Button className="mt-3" type="submit">Submit</Button>
+                        <Button className="mt-3" variant="success" type="submit">Submit</Button>
                     </Form >
                 </Card>
             </div >

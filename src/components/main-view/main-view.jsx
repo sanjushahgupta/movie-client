@@ -1,16 +1,16 @@
 
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Row, Col } from "react-bootstrap"
 
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login/login";
 import { SignInView } from "../signIn/signIn";
-import { ProfileView } from "../profile/profile";
+import { ProfileView } from "../profile-view/profile";
 import { BaseUrl } from "../../constants/constant";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Row, Col } from "react-bootstrap"
-import "../../index.scss"
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import "../../index.scss"
 
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -146,8 +146,4 @@ export const MainView = () => {
             </BrowserRouter >
         </>
     );
-
-
-
-
 }

@@ -1,6 +1,7 @@
 import React from "react"
 import { useState } from "react"
-import { Form, Button, Card, Image, Nav } from "react-bootstrap"
+import { Form, Button, Card } from "react-bootstrap"
+
 import { BaseUrl } from "../../constants/constant"
 
 export const LoginView = ({ onLoggedIn }) => {
@@ -22,8 +23,6 @@ export const LoginView = ({ onLoggedIn }) => {
             body: JSON.stringify(reqBody)
         }).then((response) => response.json())
             .then((data) => {
-                console.log("Login response: ", data);
-
                 if (data.user) {
                     localStorage.setItem("user", JSON.stringify(data.user));
                     localStorage.setItem("token", data.token)
@@ -32,7 +31,6 @@ export const LoginView = ({ onLoggedIn }) => {
                 } else {
                     alert("User not found");
                 }
-
             })
             .catch((e) => {
                 alert("Something went wrong");
@@ -41,7 +39,6 @@ export const LoginView = ({ onLoggedIn }) => {
 
     return (
         <>
-
             <div style={{ display: "grid", justifyContent: "center" }}>
                 <Card className="mt-3">
                     <Form className="p-5" onSubmit={loginSubmitHandler}>
@@ -74,6 +71,6 @@ export const LoginView = ({ onLoggedIn }) => {
                 <h4 style={{ color: "white" }} className="mt-3" >Don't have an account?</h4>
                 <Button variant="secondary" size="sm" href="/register">Register</Button>
             </div>
-        </>)
-
+        </>
+    )
 }

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Col, Button, Row } from "react-bootstrap"
+
 import { MovieCard } from "../movie-card/movie-card";
-import { BaseUrl } from "../../constants/constant";
+import { BaseUrl, token } from "../../constants/constant";
 
 export const FavoriteMovies = ({ user, movies }) => {
-    const token = localStorage.getItem("token");
     const [favMovies, setFavMovies] = useState([])
+
     useEffect(() => {
         if (user && user.favoriteMovies) {
             const favoriteMovies = movies.filter(movie => user.favoriteMovies.includes(movie.id));
@@ -13,6 +14,7 @@ export const FavoriteMovies = ({ user, movies }) => {
             setFavMovies(favoriteMovies);
         }
     }, [movies, user])
+
     if (!user) {
         return <div>Loading user data</div>;
     }
@@ -25,14 +27,13 @@ export const FavoriteMovies = ({ user, movies }) => {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "application/json"
             }
+        }).then((response) => {
+            if (response.status == 201) {
+                window.location.reload();
+            } else {
+                alert("Unable to remove movie from favorite list");
+            }
         })
-            .then((response) => {
-                if (response.status == 201) {
-                    window.location.reload();
-                } else {
-                    alert("Unable to remove movie from favorite list");
-                }
-            })
             .catch((error) => {
                 console.error("Error:", error);
             });

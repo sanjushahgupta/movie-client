@@ -2,13 +2,12 @@
 import React, { useState } from "react";
 import { Form, Card, Form, Button, Row } from "react-bootstrap";
 import { BaseUrl } from "../../constants/constant";
-import { DeleteAccount } from "../deleteUser/deleteUser";
+import { DeleteAccount } from "../delete-user/deleteUser";
 
 
-export const UpdateProfile = ({ Passeduser }) => {
-    var loggedInUser = JSON.parse(localStorage.getItem('user'))
+export const UpdateProfile = ({ loggedUser }) => {
     const token = localStorage.getItem("token");
-    const [user, setUser] = useState(Passeduser)
+    const [user, setUser] = useState(loggedUser)
 
     const [userName, setUserName] = useState(user.userName || "");
     const [password, setPassword] = useState(user.password || "");
@@ -42,16 +41,16 @@ export const UpdateProfile = ({ Passeduser }) => {
                 } else {
                     alert("Unable to updae account");
                 }
-
             })
             .catch((e) => {
                 alert("Something went wrong");
             })
 
     }
+
+
     return (
         <>
-
             <div style={{ display: "block", marginBottom: "30px", width: "60%", color: "black" }}>
                 <Card className="mt-3">
                     < Form className="p-3" onSubmit={updateSubmitHandler} >
@@ -70,8 +69,8 @@ export const UpdateProfile = ({ Passeduser }) => {
                                 minLength="5"
                                 size="lg"
                             />
-
                         </Form.Group>
+
                         <Form.Group controlId="profilePassword">
                             <Form.Label className="text-lg mt-3">Password:</Form.Label>
                             <Form.Control className={"bg-light"}
@@ -82,7 +81,6 @@ export const UpdateProfile = ({ Passeduser }) => {
                                 required
                                 minLength="6"
                             />
-
                         </Form.Group>
 
                         <Form.Group controlId="profileBirth">
@@ -95,6 +93,7 @@ export const UpdateProfile = ({ Passeduser }) => {
                                 required
                             />
                         </Form.Group>
+
                         <Form.Group controlId="profileEmail">
                             <Form.Label className="text-lg mt-3">Email:</Form.Label>
                             <Form.Control className={"bg-light"}
@@ -107,9 +106,7 @@ export const UpdateProfile = ({ Passeduser }) => {
                         </Form.Group>
                         <Button className="mt-3" type="submit">Update</Button>
                     </Form >
-
                 </Card>
-
             </div >
         </>
     )

@@ -1,6 +1,6 @@
 
 import PropTypes from 'prop-types';
-import { Card, CardImg, Button } from 'react-bootstrap';
+import { Card, CardImg } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie }) => {

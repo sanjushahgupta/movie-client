@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { BaseUrl } from "../../constants/constant";
-import { FavoriteMovies } from "../favouriteMovies/favouriteMovies"
 import { Row } from "react-bootstrap"
-import { UpdateProfile } from "../updateProfile/updateProfile"
 
+import { BaseUrl, loggedInUser } from "../../constants/constant";
+import { FavoriteMovies } from "../favourite-movies/favouriteMovies"
+import { UpdateProfile } from "../update-profile/updateProfile"
 
 export const ProfileView = ({ movies }) => {
     const [user, setUser] = useState(null);
-    var loggedInUser = JSON.parse(localStorage.getItem('user'))
 
     useEffect(() => {
         fetch(BaseUrl + "/users", {
@@ -31,7 +30,7 @@ export const ProfileView = ({ movies }) => {
     return (
         <>
             <Row className="justify-content-md-center">
-                <UpdateProfile Passeduser={user} />
+                <UpdateProfile loggedUser={user} />
                 <FavoriteMovies
                     user={user}
                     movies={movies} />
