@@ -3,6 +3,7 @@ import { useState } from "react"
 import { BaseUrl } from "../../constants/constant"
 import { Form, Button, Card, Nav, Image } from "react-bootstrap"
 import logo from "../../css/logo.png"
+import { LoginView } from "../login/login"
 
 export const SignInView = () => {
     const [userName, setUserName] = useState("");
@@ -30,8 +31,7 @@ export const SignInView = () => {
             }
         }).then((response) => {
             if (response.status == 200) {
-                alert("Signup successful");
-                window.location.reload();
+                alert("Account created.");
             } else {
                 alert("Unable to register. Please check your credentials.");
             }
@@ -39,7 +39,6 @@ export const SignInView = () => {
             console.log("error: ", e)
         });
     };
-
 
     return (
         <>
