@@ -9,6 +9,7 @@ import { LoginView } from "../login/login";
 import { SignInView } from "../signIn/signIn";
 import { ProfileView } from "../profile-view/profile";
 import { BaseUrl } from "../../constants/constant";
+import { SearchBar } from "../search-bar/searchbar";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import "../../index.scss"
 
@@ -45,15 +46,19 @@ export const MainView = () => {
             .catch((error) => {
                 console.log("error", error);
             });
-    }, [token]);
+    }, [token], [movies]);
 
 
 
     return (
         <>
+
             <NavigationBar
                 user={user}
-                onLoggedOut={handleLogout} />
+                onLoggedOut={handleLogout}
+                movies={movies}
+                setMovies={setMovies} />
+
             <BrowserRouter>
                 <Row className="justify-content-md-center mt-3">
                     <Routes>

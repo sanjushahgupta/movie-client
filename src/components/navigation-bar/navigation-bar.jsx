@@ -1,8 +1,9 @@
 import { Navbar, Nav, Image, Container, Button } from "react-bootstrap"
 import logo from "../../css/logo.png"
 import { size } from "lodash"
+import { SearchBar } from "../search-bar/searchbar"
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
+export const NavigationBar = ({ user, onLoggedOut, setMovies, movies }) => {
 
     if (user !== null) {
         return (
@@ -15,9 +16,12 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="me-auto">
                                     <Nav.Link style={{ color: "white", fontSize: "18px" }} href="/">Movies</Nav.Link>
-
                                     <Nav.Link style={{ color: "white", fontSize: "18px" }} href="/profile">Profile</Nav.Link>
+                                    {movies.length > 1 &&
+                                        < SearchBar setMovies={setMovies} ></SearchBar>}
+
                                 </Nav>
+
                                 <Nav.Item className="ml-auto">
                                     <Button className="float-right" style={{ background: "gray", border: 'none' }} size="sm" onClick={onLoggedOut}> Logout</Button>
                                 </Nav.Item>
