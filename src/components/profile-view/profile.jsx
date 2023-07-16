@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row } from "react-bootstrap"
+import { Col } from "react-bootstrap"
 
 import { BaseUrl, loggedInUser } from "../../constants/constant";
 import { FavoriteMovies } from "../favourite-movies/favouriteMovies"
@@ -29,12 +29,12 @@ export const ProfileView = ({ movies }) => {
 
     return (
         <>
-            <Row className="justify-content-md-center">
-                <UpdateProfile loggedUser={user} />
+            <Col className="justify-content-md-center">
                 <FavoriteMovies
                     user={user}
                     movies={movies} />
-            </Row>
+                <UpdateProfile loggedUser={user} />
+            </Col>
         </>
     )
 

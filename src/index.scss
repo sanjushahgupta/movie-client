@@ -21,13 +21,12 @@ $color: rgb(250, 247, 247);
 
 .movieDescriptionHeader {
     span {
-        color: #ffff;
+        color: #9c9a9a;
         font-weight: bold;
     }
 
     color: #ffff;
     font-size: 18px;
-    margin:3px;
 }
 
 .signIn {
@@ -47,4 +46,11 @@ $color: rgb(250, 247, 247);
 .movieCard {
     width: 15rem;
     height: 16rem;
+}
+
+.bg-gray {
+    background-color: rgb(218, 221, 221);
+    border: none;
+    margin-top: 10px;
+
 }

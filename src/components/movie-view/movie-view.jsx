@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useParams } from 'react-router';
 import { BaseUrl, loggedInUser, token } from "../../constants/constant";
 
@@ -25,9 +27,19 @@ export const MovieView = ({ movies }) => {
             body: JSON.stringify(requestBody)
         }).then((response) => {
             if (response.status == 201) {
-                alert("Movie added successfully to favourite list.");
+                toast("Movie added to favourite list.", {
+                    position: "top-center",
+                    closeOnClick: true,
+                    hideProgressBar: true,
+                    autoClose: 1000,
+                });
             } else {
-                alert("Unable to add movie to favourite list.");
+                toast("Unable to add movie to favourite list. Try again", {
+                    position: "top-center",
+                    closeOnClick: true,
+                    hideProgressBar: true,
+                    autoClose: 1000,
+                });
             }
         }).catch((error) => {
             console.error("Error:", error);
@@ -37,6 +49,7 @@ export const MovieView = ({ movies }) => {
     return (
         <>
             <Card style={{ maxWidth: "50rem" }}>
+                <div className="toast-container"><ToastContainer /></div>
                 <Card.Img className="img-fluid" src={movie.image} alt="logoImg" />
             </Card>
 

@@ -1,6 +1,11 @@
 import React from "react"
 import { useState } from "react"
-import { Form, Button, Card } from "react-bootstrap"
+import { Form, Button, Card, Row, Image } from "react-bootstrap"
+import logo from "../../css/logo.png"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { PiFilmReelFill } from "react-icons/pi";
+import { BiLogIn } from "react-icons/bi";
 
 import { BaseUrl } from "../../constants/constant"
 
@@ -29,25 +34,38 @@ export const LoginView = ({ onLoggedIn }) => {
                     onLoggedIn(data.user, data.token);
                     window.location.reload();
                 } else {
-                    alert("User not found");
+                    toast("User not found. please check your credentials.", {
+                        position: "top-center",
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        autoClose: 1000,
+                    });
                 }
             })
             .catch((e) => {
-                alert("Something went wrong");
+                toast("Something went wrong", {
+                    position: "top-center",
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    autoClose: 1000,
+                });
             })
     }
 
     return (
         <>
+
             <div style={{ display: "grid", justifyContent: "center" }}>
-                <Card className="mt-3">
+
+                <Card className="mt-3" style={{ width: "100%", background: "gray", textAlign: "center" }}>
+                    <div className="toast-container"><ToastContainer /></div>
                     <Form className="p-5" onSubmit={loginSubmitHandler}>
-                        <h3>Login</h3>
+                        <h2 style={{ color: "#530f0f" }}>Login to Movie<span style={{ color: " black" }}><PiFilmReelFill /></span>Box</h2>
                         <Form.Group controlId="loginUsername">
-                            <Form.Label className="text-lg mt-3">Username:</Form.Label>
-                            <Form.Control className={"bg-light"}
+                            <Form.Control className={"bg-light mt-3"}
                                 type="text"
                                 size="lg"
+                                placeholder="Username"
                                 value={userName}
                                 onChange={(e) => setuserName(e.target.value)}
                                 required
@@ -55,22 +73,22 @@ export const LoginView = ({ onLoggedIn }) => {
                         </Form.Group>
 
                         <Form.Group controlId="loginPassword">
-                            <Form.Label className="text-lg mt-3">Password:</Form.Label>
-                            <Form.Control className={"bg-light"}
+                            <Form.Control className={"bg-light  mt-3"}
                                 type="password"
-                                size="xs"
+                                size="lg"
                                 value={password}
+                                placeholder="Password"
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                                 minLength="6" />
                         </Form.Group>
-                        <Button className="mt-2" variant="success" type="submit">Submit</Button>
+                        <Button className="mt-2" variant="success" type="submit">Login<BiLogIn /></Button>
                     </Form>
                 </Card>
 
-                <h4 style={{ color: "white" }} className="mt-3" >Don't have an account?</h4>
-                <Button variant="secondary" size="sm" href="/register">Register</Button>
-            </div>
+                <h4 style={{ color: "white" }} className="mt-5" >Don't have an account?</h4>
+                <Button variant="secondary" href="/register">Register</Button>
+            </div >
         </>
     )
 }

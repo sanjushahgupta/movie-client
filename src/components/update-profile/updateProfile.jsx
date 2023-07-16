@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Form, Card, Form, Button, Row } from "react-bootstrap";
 import { BaseUrl } from "../../constants/constant";
 import { DeleteAccount } from "../delete-user/deleteUser";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const UpdateProfile = ({ loggedUser }) => {
@@ -36,14 +38,27 @@ export const UpdateProfile = ({ loggedUser }) => {
             .then((data) => {
                 if (data) {
                     localStorage.setItem("user", JSON.stringify(data));
-                    window.location.reload();
-                    alert("Account updated");
+                    toast("Account updated", {
+                        position: "top-center",
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        autoClose: 1000,
+                    });
+
                 } else {
-                    alert("Unable to updae account");
+                    toast("Unable to update account. Please check your credentials.", {
+                        position: "top-center",
+                        closeOnClick: true,
+                        autoClose: 1000,
+                    });
                 }
             })
             .catch((e) => {
-                alert("Something went wrong");
+                toast("Unable to update account. Try again", {
+                    position: "top-center",
+                    closeOnClick: true,
+                    autoClose: 1000,
+                });
             })
 
     }
@@ -51,16 +66,14 @@ export const UpdateProfile = ({ loggedUser }) => {
 
     return (
         <>
-            <div style={{ display: "block", marginBottom: "30px", width: "60%", color: "black" }}>
+            <div style={{ display: "grid", justifyContent: "start", margin: "30px", color: "black" }}>
                 <Card className="mt-3">
-                    < Form className="p-3" onSubmit={updateSubmitHandler} >
-                        <h3>Update Profile</h3>
-                        <div className="text-end">
-                            <Button variant="danger" onClick={DeleteAccount}>Delete Account</Button>
-                        </div>
+                    <div className="toast-container"><ToastContainer /></div>
+                    < Form className="p-5" onSubmit={updateSubmitHandler} >
+                        <h3>Update your account information</h3>
                         <Form.Group controlId="profileUsername">
                             <Form.Label className="text-lg mt-3">
-                                Username: </Form.Label>
+                                Username</Form.Label>
                             <Form.Control className={"bg-light"}
                                 type="text"
                                 value={userName}
@@ -72,7 +85,7 @@ export const UpdateProfile = ({ loggedUser }) => {
                         </Form.Group>
 
                         <Form.Group controlId="profilePassword">
-                            <Form.Label className="text-lg mt-3">Password:</Form.Label>
+                            <Form.Label className="text-lg mt-3">Password</Form.Label>
                             <Form.Control className={"bg-light"}
                                 type="password"
                                 size="lg"
@@ -84,7 +97,7 @@ export const UpdateProfile = ({ loggedUser }) => {
                         </Form.Group>
 
                         <Form.Group controlId="profileBirth">
-                            <Form.Label className="text-lg mt-3"> DateOfBirth:</Form.Label>
+                            <Form.Label className="text-lg mt-3"> DateOfBirth</Form.Label>
                             <Form.Control className={"bg-light"}
                                 type="date"
                                 size="lg"
@@ -95,7 +108,7 @@ export const UpdateProfile = ({ loggedUser }) => {
                         </Form.Group>
 
                         <Form.Group controlId="profileEmail">
-                            <Form.Label className="text-lg mt-3">Email:</Form.Label>
+                            <Form.Label className="text-lg mt-3">Email</Form.Label>
                             <Form.Control className={"bg-light"}
                                 type="email"
                                 size="lg"
@@ -104,7 +117,11 @@ export const UpdateProfile = ({ loggedUser }) => {
                                 required
                             />
                         </Form.Group>
-                        <Button className="mt-3" type="submit">Update</Button>
+                    
+                        <Button className="mt-5" variant="warning" type="submit">Update Account</Button>
+                        <div className="text-end mt-5">
+                            <Button variant="danger" onClick={DeleteAccount}>Delete Account</Button>
+                        </div>
                     </Form >
                 </Card>
             </div >
