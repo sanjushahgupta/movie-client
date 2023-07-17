@@ -16,7 +16,7 @@ export const SignInView = () => {
     const [birth, SetDateOfBirth] = useState("");
     const [loading, setLoading] = useState(false);
 
-    registerSubmitHandler = (event) => {
+    const registerSubmitHandler = (event) => {
 
         event.preventDefault();
         const reqBody = {
