@@ -1,15 +1,25 @@
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript%20%26%20React-1f425f.svg)](https://www.javascript.com)
 ## Movie Application 🎥 🎬
- A client-based application that interacts with a movie API and allows the user to access information about movies.
+ A client-based application that interacts with a movie API and allows the user to access movie information and save it to a favorite list.
 
  
-## Planned Features
+## Features
 - Display lists of movies
 - Display details of movies
 - Register new user
 - Update user profiles
 - Add/remove movie to the favorites list
 - Deregister users
+
+  ## Screenshots
+  
+<img width="500" alt="Screenshot 2023-07-17 at 16 27 02" src="https://github.com/sanjushahgupta/movie-client/assets/71315276/2d1de7c1-918a-4fa4-9163-0151ec76a0b3">
+
+## Built with
+- JavaScript
+- React
+- Bootstrap
+- Fetch from FlexAPI
 
 ## Run Locally
 #### Clone the repository
