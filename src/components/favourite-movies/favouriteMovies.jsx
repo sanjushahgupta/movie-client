@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Col, Button, Row } from "react-bootstrap"
 import { ToastContainer, toast } from 'react-toastify';
+import { LuDelete } from "react-icons/lu";
 import 'react-toastify/dist/ReactToastify.css';
 
 import { MovieCard } from "../movie-card/movie-card";
 import { BaseUrl, token } from "../../constants/constant";
-import { LuDelete } from "react-icons/lu";
 
 export const FavoriteMovies = ({ user, movies }) => {
     const [favMovies, setFavMovies] = useState([])
@@ -40,26 +40,29 @@ export const FavoriteMovies = ({ user, movies }) => {
                     autoClose: 1000,
                 });
             }
-        })
-            .catch((error) => {
-                console.error("Error:", error);
+        }).catch((error) => {
+            toast("Oops! Something went wrong. Please try again later.", {
+                position: "top-center",
+                closeOnClick: true,
+                autoClose: 1000,
             });
+        });
     };
+
+
     return (
         <>
             {
                 favMovies.length < 1 && (
                     <>
-                        <h3 style={{ textAlign: "center", color: "gray" }}>Favorite Movies list is empty</h3>
+                        <h6 className="text-center text-muted">Your favorite movie list is empty.</h6>
                     </>)
             }
-
             {
-
                 favMovies.length > 0 && (
                     <>
                         <div className="toast-container"><ToastContainer /></div>
-                        <h3 style={{ textAlign: "center", color: "white" }}>Favourites Movies</h3>
+                        <h3 className="text-center text-muted">Favourites Movies</h3>
                         <Row className="justify-content-md-center">
                             {
                                 favMovies.map((movie) => (
@@ -74,9 +77,7 @@ export const FavoriteMovies = ({ user, movies }) => {
                                 ))}
                         </Row>
                     </>)
-
             }
-
         </>
     )
 }

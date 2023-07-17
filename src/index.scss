@@ -21,11 +21,13 @@ $color: rgb(250, 247, 247);
 
 .movieDescriptionHeader {
     span {
-        color: #9c9a9a;
-        font-weight: bold;
+        color: #f4f4ee;
+        font-size: 21px;
+
     }
 
-    color: #ffff;
+    color: #e4d7d7;
+
     font-size: 18px;
 }
 
@@ -43,6 +45,10 @@ $color: rgb(250, 247, 247);
     height: 100vh;
 }
 
+.movieView {
+    max-width: 50rem
+}
+
 .movieCard {
     width: 15rem;
     height: 16rem;
@@ -53,4 +59,18 @@ $color: rgb(250, 247, 247);
     border: none;
     margin-top: 10px;
 
+}
+
+.focus-white:focus {
+    background-color: white;
+}
+
+.login-card {
+    max-width: 600px;
+    width: 100%;
+    background-color: gray;
+}
+
+.fontsize {
+    font-size: 20px;
 }

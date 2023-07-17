@@ -1,13 +1,13 @@
-import React from "react"
-import { useState } from "react"
-import { Form, Button, Card, Row, Image } from "react-bootstrap"
-import logo from "../../css/logo.png"
+import React, { useState } from "react"
+import { Form, Button, Card } from "react-bootstrap"
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { PiFilmReelFill } from "react-icons/pi";
+import { RiAccountCircleFill } from "react-icons/ri";
 import { BiLogIn } from "react-icons/bi";
+import 'react-toastify/dist/ReactToastify.css';
 
 import { BaseUrl } from "../../constants/constant"
+import "../../index.scss"
 
 export const LoginView = ({ onLoggedIn }) => {
     const [userName, setuserName] = useState("");
@@ -34,7 +34,7 @@ export const LoginView = ({ onLoggedIn }) => {
                     onLoggedIn(data.user, data.token);
                     window.location.reload();
                 } else {
-                    toast("User not found. please check your credentials.", {
+                    toast("Login unsuccessful. Please check your credentials.", {
                         position: "top-center",
                         hideProgressBar: true,
                         closeOnClick: true,
@@ -43,7 +43,7 @@ export const LoginView = ({ onLoggedIn }) => {
                 }
             })
             .catch((e) => {
-                toast("Something went wrong", {
+                toast("Oops! Something went wrong. Please try again later.", {
                     position: "top-center",
                     hideProgressBar: true,
                     closeOnClick: true,
@@ -54,15 +54,14 @@ export const LoginView = ({ onLoggedIn }) => {
 
     return (
         <>
-
-            <div style={{ display: "grid", justifyContent: "center" }}>
-
-                <Card className="mt-3" style={{ width: "100%", background: "gray", textAlign: "center" }}>
+            <div className="d-grid justify-content-center">
+                <Card className="mt-3 text-center login-card" >
                     <div className="toast-container"><ToastContainer /></div>
                     <Form className="p-5" onSubmit={loginSubmitHandler}>
-                        <h2 style={{ color: "#530f0f" }}>Login to Movie<span style={{ color: " black" }}><PiFilmReelFill /></span>Box</h2>
+                        <h2 style={{ color: "#530f0f" }}>Login to Movie<span className="text-black"><PiFilmReelFill /></span>Box</h2>
                         <Form.Group controlId="loginUsername">
-                            <Form.Control className={"bg-light mt-3"}
+                            <Form.Label className="visually-hidden">username</Form.Label>
+                            <Form.Control className={"bg-light mt-5"}
                                 type="text"
                                 size="lg"
                                 placeholder="Username"
@@ -73,6 +72,7 @@ export const LoginView = ({ onLoggedIn }) => {
                         </Form.Group>
 
                         <Form.Group controlId="loginPassword">
+                            <Form.Label className="visually-hidden">password</Form.Label>
                             <Form.Control className={"bg-light  mt-3"}
                                 type="password"
                                 size="lg"
@@ -82,12 +82,12 @@ export const LoginView = ({ onLoggedIn }) => {
                                 required
                                 minLength="6" />
                         </Form.Group>
-                        <Button className="mt-2" variant="success" type="submit">Login<BiLogIn /></Button>
+                        <Button className="mt-3" variant="success" size="lg" type="submit">Login<BiLogIn /></Button>
                     </Form>
                 </Card>
 
-                <h4 style={{ color: "white" }} className="mt-5" >Don't have an account?</h4>
-                <Button variant="secondary" href="/register">Register</Button>
+                <h4 className="mt-5 text-white" >Don't have an account?</h4>
+                <Button variant="secondary" href="/register">Register<RiAccountCircleFill /></Button>
             </div >
         </>
     )

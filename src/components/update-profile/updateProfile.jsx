@@ -1,11 +1,11 @@
 
 import React, { useState } from "react";
-import { Form, Card, Form, Button, Row } from "react-bootstrap";
-import { BaseUrl } from "../../constants/constant";
-import { DeleteAccount } from "../delete-user/deleteUser";
+import { Form, Card, Form, Button } from "react-bootstrap";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { BaseUrl } from "../../constants/constant";
+import { DeleteAccount } from "../delete-user/deleteUser";
 
 export const UpdateProfile = ({ loggedUser }) => {
     const token = localStorage.getItem("token");
@@ -66,7 +66,7 @@ export const UpdateProfile = ({ loggedUser }) => {
 
     return (
         <>
-            <div style={{ display: "grid", justifyContent: "start", margin: "30px", color: "black" }}>
+            <div className="d-grid justify-content-start text-black">
                 <Card className="mt-3">
                     <div className="toast-container"><ToastContainer /></div>
                     < Form className="p-5" onSubmit={updateSubmitHandler} >
@@ -74,7 +74,7 @@ export const UpdateProfile = ({ loggedUser }) => {
                         <Form.Group controlId="profileUsername">
                             <Form.Label className="text-lg mt-3">
                                 Username</Form.Label>
-                            <Form.Control className={"bg-light"}
+                            <Form.Control className="bg-light"
                                 type="text"
                                 value={userName}
                                 onChange={(e) => setUserName(e.target.value)}
@@ -86,7 +86,7 @@ export const UpdateProfile = ({ loggedUser }) => {
 
                         <Form.Group controlId="profilePassword">
                             <Form.Label className="text-lg mt-3">Password</Form.Label>
-                            <Form.Control className={"bg-light"}
+                            <Form.Control className="bg-light"
                                 type="password"
                                 size="lg"
                                 value={password}
@@ -98,7 +98,7 @@ export const UpdateProfile = ({ loggedUser }) => {
 
                         <Form.Group controlId="profileBirth">
                             <Form.Label className="text-lg mt-3"> DateOfBirth</Form.Label>
-                            <Form.Control className={"bg-light"}
+                            <Form.Control className="bg-light"
                                 type="date"
                                 size="lg"
                                 value={birth}
@@ -109,7 +109,7 @@ export const UpdateProfile = ({ loggedUser }) => {
 
                         <Form.Group controlId="profileEmail">
                             <Form.Label className="text-lg mt-3">Email</Form.Label>
-                            <Form.Control className={"bg-light"}
+                            <Form.Control className="bg-light"
                                 type="email"
                                 size="lg"
                                 value={email}
@@ -117,11 +117,10 @@ export const UpdateProfile = ({ loggedUser }) => {
                                 required
                             />
                         </Form.Group>
-                    
-                        <Button className="mt-5" variant="warning" type="submit">Update Account</Button>
-                        <div className="text-end mt-5">
-                            <Button variant="danger" onClick={DeleteAccount}>Delete Account</Button>
-                        </div>
+
+                        <Button className="mt-2" variant="warning" type="submit">Update Account</Button>
+                        <div><Button className="mt-5" variant="danger" onClick={DeleteAccount}>Delete Account</Button></div>
+
                     </Form >
                 </Card>
             </div >

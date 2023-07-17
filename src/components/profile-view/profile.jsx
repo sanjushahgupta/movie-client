@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Col } from "react-bootstrap"
+import Spinner from 'react-bootstrap/Spinner';
 
 import { BaseUrl, loggedInUser } from "../../constants/constant";
 import { FavoriteMovies } from "../favourite-movies/favouriteMovies"
@@ -23,10 +24,10 @@ export const ProfileView = ({ movies }) => {
             });
     }, []);
 
-    if (!user) {
-        return <div>Loading user data</div>;
-    }
 
+    if (!user) {
+        return <Spinner animation="border" variant="light" />
+    }
     return (
         <>
             <Col className="justify-content-md-center">

@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { FaSearch } from "react-icons/fa";
 import { BaseUrl, token } from "../../constants/constant";
-import { Col, Row } from "react-bootstrap"
+import { Col, Form } from "react-bootstrap"
+import "../../index.scss"
 
 
 export const SearchBar = ({ setMovies }) => {
     const [searchInput, setSearchInput] = useState("");
 
     const handleChange = (value) => {
-        setSearchInput(value);
+        setSearchInput(value.charAt(0).toUpperCase() + value.slice(1).toLowerCase());
     };
 
     useEffect(() => {
@@ -36,21 +36,22 @@ export const SearchBar = ({ setMovies }) => {
     }, [searchInput]);
 
 
-
-
     return (
         <>
-            <div
-                className="input-wrapper"
-                style={{ marginLeft: "8px", borderRadius: "10px" }}
-            >
-                <input
-                    placeholder="search by title"
-                    value={searchInput}
-                    onChange={(e) => handleChange(e.target.value)}
-                />
-                <FaSearch id="search-icon" style={{ color: "white" }} />
-            </div>
+
+            <Col sm={3} style={{ textAlign: "left" }}>
+                <Form>
+                    <Form.Control
+                        type="search"
+                        value={searchInput}
+                        onChange={(e) => handleChange(e.target.value)}
+                        placeholder="Search by movie title 🔍"
+                        className="rounded-pill bg-gray mb-5 border-0  text-center focus-white"
+                        aria-label="Search"
+                    />
+                </Form>
+            </Col>
+
         </>
     );
 
