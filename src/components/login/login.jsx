@@ -5,6 +5,7 @@ import { PiFilmReelFill } from "react-icons/pi";
 import { RiAccountCircleFill } from "react-icons/ri";
 import { BiLogIn } from "react-icons/bi";
 import 'react-toastify/dist/ReactToastify.css';
+import Spinner from 'react-bootstrap/Spinner';
 
 import { BaseUrl } from "../../constants/constant"
 import "../../index.scss"
@@ -12,6 +13,7 @@ import "../../index.scss"
 export const LoginView = ({ onLoggedIn }) => {
     const [userName, setuserName] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const loginSubmitHandler = (event) => {
         event.preventDefault();
@@ -19,7 +21,7 @@ export const LoginView = ({ onLoggedIn }) => {
             userName: userName,
             password: password
         };
-
+        setLoading(true);
         fetch(BaseUrl + "/login", {
             method: "POST",
             headers: {
@@ -28,6 +30,7 @@ export const LoginView = ({ onLoggedIn }) => {
             body: JSON.stringify(reqBody)
         }).then((response) => response.json())
             .then((data) => {
+                setLoading(false);
                 if (data.user) {
                     localStorage.setItem("user", JSON.stringify(data.user));
                     localStorage.setItem("token", data.token)
@@ -43,6 +46,7 @@ export const LoginView = ({ onLoggedIn }) => {
                 }
             })
             .catch((e) => {
+                setLoading(false)
                 toast("Oops! Something went wrong. Please try again later.", {
                     position: "top-center",
                     hideProgressBar: true,
@@ -55,11 +59,14 @@ export const LoginView = ({ onLoggedIn }) => {
     return (
         <>
             <div className="d-grid justify-content-center">
+
                 <Card className="mt-3 text-center login-card" >
                     <div className="toast-container"><ToastContainer /></div>
+
                     <Form className="p-5" onSubmit={loginSubmitHandler}>
                         <h2 style={{ color: "#530f0f" }}>Login to Movie<span className="text-black"><PiFilmReelFill /></span>Box</h2>
                         <Form.Group controlId="loginUsername">
+                            {loading && <Spinner className="text-center" animation="border" variant="light" />}
                             <Form.Label className="visually-hidden">username</Form.Label>
                             <Form.Control className={"bg-light mt-5"}
                                 type="text"
@@ -70,7 +77,6 @@ export const LoginView = ({ onLoggedIn }) => {
                                 required
                                 minLength="5" />
                         </Form.Group>
-
                         <Form.Group controlId="loginPassword">
                             <Form.Label className="visually-hidden">password</Form.Label>
                             <Form.Control className={"bg-light  mt-3"}
