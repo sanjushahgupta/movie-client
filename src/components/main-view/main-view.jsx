@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Row, Col } from "react-bootstrap"
+import Spinner from 'react-bootstrap/Spinner';
+
 
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -10,6 +12,8 @@ import { SignInView } from "../signIn/signIn";
 import { ProfileView } from "../profile-view/profile";
 import { BaseUrl } from "../../constants/constant";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { SearchBar } from "../search-bar/searchbar"
+
 import "../../index.scss"
 
 export const MainView = () => {
@@ -45,7 +49,7 @@ export const MainView = () => {
             .catch((error) => {
                 console.log("error", error);
             });
-    }, [token]);
+    }, [token], [movies]);
 
 
 
@@ -53,7 +57,9 @@ export const MainView = () => {
         <>
             <NavigationBar
                 user={user}
-                onLoggedOut={handleLogout} />
+                onLoggedOut={handleLogout}
+                movies={movies}
+                setMovies={setMovies} />
             <BrowserRouter>
                 <Row className="justify-content-md-center mt-3">
                     <Routes>
@@ -92,7 +98,7 @@ export const MainView = () => {
                                     {!user ? (
                                         <Navigate to="/login" replace />
                                     ) : movies.length === 0 ? (
-                                        <Col>The list is empty!</Col>
+                                        <Spinner animation="border" variant="light" />
                                     ) : (
                                         <Col md={8}>
                                             <MovieView movies={movies} />
@@ -111,6 +117,7 @@ export const MainView = () => {
                                         <Col>The list is empty.</Col>
                                     ) : (
                                         <>
+                                            < SearchBar setMovies={setMovies} ></SearchBar>
                                             <Row className="justify-content-md-center">
                                                 {movies.map((movie) => (
                                                     <Col className="mb-5" key={movie.id} md="auto">

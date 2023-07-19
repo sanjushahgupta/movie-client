@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Col, Button, Row } from "react-bootstrap"
+import { ToastContainer, toast } from 'react-toastify';
+import { LuDelete } from "react-icons/lu";
+import 'react-toastify/dist/ReactToastify.css';
 
 import { MovieCard } from "../movie-card/movie-card";
 import { BaseUrl, token } from "../../constants/constant";
@@ -31,25 +34,45 @@ export const FavoriteMovies = ({ user, movies }) => {
             if (response.status == 201) {
                 window.location.reload();
             } else {
-                alert("Unable to remove movie from favorite list");
+                toast("Unable to remove movie from favourite list. Try again", {
+                    position: "top-center",
+                    closeOnClick: true,
+                    autoClose: 1000,
+                });
             }
-        })
-            .catch((error) => {
-                console.error("Error:", error);
+        }).catch((error) => {
+            toast("Oops! Something went wrong. Please try again later.", {
+                position: "top-center",
+                closeOnClick: true,
+                autoClose: 1000,
             });
+        });
     };
+
+
     return (
         <>
             {
+                favMovies.length < 1 && (
+                    <>
+                        <h6 className="text-center text-muted">Your favorite movie list is empty.</h6>
+                    </>)
+            }
+            {
                 favMovies.length > 0 && (
                     <>
-                        <h3 style={{ textAlign: "center", color: "white" }}>Favourites Movies</h3>
+                        <div className="toast-container"><ToastContainer /></div>
+                        <h3 className="text-center text-muted">Favourites Movies</h3>
                         <Row className="justify-content-md-center">
                             {
                                 favMovies.map((movie) => (
-                                    <Col className="mb-5" key={movie.id} md="auto">
+                                    <Col className="mb-5" key={movie.id} md="auto" style={{ position: 'relative' }}>
+                                        <Button style={{
+                                            position: 'absolute',
+                                            zIndex: '1',
+                                        }} onClick={(event) => removeFavHandler(movie.title, event)} variant="danger" size="xs"><LuDelete></LuDelete></Button>
                                         <MovieCard movie={movie} />
-                                        <Button onClick={(event) => removeFavHandler(movie.title, event)} variant="danger" size="xs">Remove</Button>
+
                                     </Col>
                                 ))}
                         </Row>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie }) => {
     return <>
-        <Link style={{ textDecoration: 'none', color: 'black' }} to={`/movies/${encodeURIComponent(movie.id)}`}>
+        <Link className='text-decoration-none  text-black' to={`/movies/${encodeURIComponent(movie.id)}`}>
             <Card className='movieCard'>
                 <CardImg src={movie.image} width={150} height={180} alt="ImgMovie"></CardImg>
                 <Card.Body>
@@ -17,7 +17,6 @@ export const MovieCard = ({ movie }) => {
 }
 
 MovieCard.propTypes = {
-    //(shape({...}) means that it’s an object)
     movie: PropTypes.shape({
         title: PropTypes.string,
     }).isRequired,

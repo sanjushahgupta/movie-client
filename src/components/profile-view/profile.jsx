@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Row } from "react-bootstrap"
+import { Col } from "react-bootstrap"
+import Spinner from 'react-bootstrap/Spinner';
 
 import { BaseUrl, loggedInUser } from "../../constants/constant";
 import { FavoriteMovies } from "../favourite-movies/favouriteMovies"
@@ -23,18 +24,18 @@ export const ProfileView = ({ movies }) => {
             });
     }, []);
 
-    if (!user) {
-        return <div>Loading user data</div>;
-    }
 
+    if (!user) {
+        return <Spinner animation="border" variant="light" />
+    }
     return (
         <>
-            <Row className="justify-content-md-center">
-                <UpdateProfile loggedUser={user} />
+            <Col className="justify-content-md-center">
                 <FavoriteMovies
                     user={user}
                     movies={movies} />
-            </Row>
+                <UpdateProfile loggedUser={user} />
+            </Col>
         </>
     )
 
