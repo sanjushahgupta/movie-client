@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Row, Col } from "react-bootstrap"
 import Spinner from 'react-bootstrap/Spinner';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -23,134 +23,44 @@ export const MainView = () => {
     const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
 
-    const handleLogout = () => {
-        setUser(null);
-        setToken(null);
-        localStorage.clear();
-    };
-
-    useEffect(() => {
-        fetch(BaseUrl + "/movies", {
-            headers: { Authorization: `Bearer ${token}` },
-        }).then((response) => response.json())
-            .then((data) => {
-                const movieFromApi = data.map((movie) => ({
-                    id: movie._id,
-                    title: movie.Title,
-                    image: movie.Image,
-                    description: movie.Description,
-                    director: movie.Director.Name,
-                    directorBio: movie.Director.Bio,
-                    genre: movie.Genre.Name,
-                    genreDescription: movie.Genre.Description
-                }));
-                setMovies(movieFromApi);
-            })
-            .catch((error) => {
-                console.log("error", error);
-            });
-    }, [token], [movies]);
-
-
+    const [employees, setEmployees] = useState(["Shyam", "Ram"])
+    const [checked, setChecked] = useState(false)
+    const handleChange = () => {
+        setChecked(!checked)
+        setEmployees(prevSelected => {
+            if (prevSelected.includes("hari")) {
+                return prevSelected.filter(name => name !== "hari")
+            } else {
+                return prevSelected.concat("hari")
+            }
+        })
+    }
 
     return (
         <>
-            <NavigationBar
-                user={user}
-                onLoggedOut={handleLogout}
-                movies={movies}
-                setMovies={setMovies} />
-            <BrowserRouter>
-                <Row className="justify-content-md-center mt-3">
-                    <Routes>
-                        <Route
-                            path="/register"
-                            element={
-                                <>
-                                    {user ? (
-                                        <Navigate to="/" />
-                                    ) : (
-                                        <Col>
-                                            <SignInView />
-                                        </Col>
-                                    )}
-                                </>
-                            }
+        <h3>Please select one or more users.</h3>
+           <div style={{background:"white", padding:"10px"}}>
+            <div className="card" style={{ padding: "16px", border: "1px solid black", position: "relative" }}> 
+            <div className="userDirectory" style={{ position: "absolute", top: "-20px", left:"1", padding:"0px 8px",background:"white" }}>User Directory</div>
+                    <div className="1stLevelCard" style={{ background: "lightGray", padding: "8px", marginBottom: "3px", display: "flex", justifyContent: "space-between", }}>CEO
+                        <input type="checkbox"
+                            checked={checked}
+                            onChange={handleChange}
                         />
-                        <Route
-                            path="/login"
-                            element={
-                                <>
-                                    {user ? (
-                                        <Navigate to="/" />
-                                    ) : (
-                                        <Col>
-                                            <LoginView onLoggedIn={(user) => setUser(user)} />
-                                        </Col>
-                                    )}
-                                </>
-                            }
+                    </div>
+                    <div className="2ndLevelCard" style={{ background: "lightGray", padding: "8px", marginLeft: "18px", marginBottom:"3px", display:"flex", justifyContent:"space-between"}}>
+                        HR
+                        <input type="checkbox"
                         />
-                        <Route
-                            path="/movies/:movieId"
-                            element={
-                                <>
-                                    {!user ? (
-                                        <Navigate to="/login" replace />
-                                    ) : movies.length === 0 ? (
-                                        <Spinner animation="border" variant="light" />
-                                    ) : (
-                                        <Col md={8}>
-                                            <MovieView movies={movies} />
-                                        </Col>
-                                    )}
-                                </>
-                            }
-                        />
-                        <Route
-                            path="/"
-                            element={
-                                <>
-                                    {!user ? (
-                                        <Navigate to="/login" replace />
-                                    ) : movies.length === 0 ? (
-                                        <Col>The list is empty.</Col>
-                                    ) : (
-                                        <>
-                                            < SearchBar setMovies={setMovies} ></SearchBar>
-                                            <Row className="justify-content-md-center">
-                                                {movies.map((movie) => (
-                                                    <Col className="mb-5" key={movie.id} md="auto">
-                                                        <MovieCard
-                                                            movie={movie} />
-                                                    </Col>
-                                                ))}
-                                            </Row>
-                                        </>
-                                    )}
-                                </>
-                            }
-                        />
-                        <Route
-                            path="/profile"
-                            element={
-                                <>
-                                    {!user ? (
-                                        <Navigate to="/login" replace />
-                                    ) : movies.length === 0 ? (
-                                        <Col>The list is empty!</Col>
-                                    ) : (
-                                        <Col>
-                                            <ProfileView movies={movies} />
-                                        </Col>
-                                    )}
-
-                                </>
-                            }
-                        />
-                    </Routes>
-                </Row>
-            </BrowserRouter >
+                    </div>
+                    <button onClick={() => console.log('selected Employees',employees)
+                        
+                    }
+                        style={{ position: "absolute", bottom: "0", right: "0", marginBottom: "-50px", padding: " 0px 8px" }}>
+               Submit Selection 
+                </button>
+                </div>
+            </div> 
         </>
     );
 }
